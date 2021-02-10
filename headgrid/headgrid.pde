@@ -27,7 +27,6 @@ void draw() {
   }
     
   //lights();
-  //lightSpecular(220, 220, 220);
   directionalLight(102, 102, 102, 0, 0, -1);
   lightSpecular(204, 204, 204);
   directionalLight(102, 102, 102, 0, 1, -1);
@@ -35,6 +34,11 @@ void draw() {
   drawTarget();
   drawTestHead();
 }
+
+float targetRZ = 0;
+float targetRX = 0;
+
+float rZ, rX; 
 
 void drawTestHead() {
   pushMatrix();
@@ -44,9 +48,14 @@ void drawTestHead() {
   
   rotateX(HALF_PI);
   if (lookAtMouse) {
-    rotateZ(map(mouseX, 0, width, HALF_PI, -HALF_PI));
-  } else {
-    // look straight forward
+    float targetRZ = map(mouseX, 0, width, HALF_PI, -HALF_PI);
+    float targetRX = map(mouseY, 0, height, PI / 6, - PI / 6);
+    
+    rZ = lerp(rZ, targetRZ, 0.2);
+    rX = lerp(rX, targetRX, 0.1);
+    
+    rotateZ(rZ);
+    rotateX(rX);
   }
   
   specular(150, 150, 150);
