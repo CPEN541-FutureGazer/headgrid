@@ -6,6 +6,8 @@ float cameraZ;
 
 Head[] heads = new Head[9];
 
+int mode = 0;
+
 void settings() {
   size(1280, 720, P3D);
 
@@ -31,7 +33,7 @@ void draw() {
   background(20);
   fill(255);
   noStroke();
-  text(frameRate, 20, 20);
+  text(int(frameRate) + " mode: " + str(mode), 20, 20);
 
   //lights();
   //directionalLight(102, 102, 102, 0, 0, - 1);
@@ -45,4 +47,17 @@ void draw() {
   for (int i = 0; i < heads.length; i++) {
     heads[i].draw();
   }
+}
+
+Boolean noiseMove = false;
+
+void keyPressed() {
+	if (key >= '0' && key <= '9') {
+		mode = key - '0';
+	}
+
+	/* Turn on noisy move */
+	if (key == 'n') {
+		noiseMove = !noiseMove;
+	}
 }

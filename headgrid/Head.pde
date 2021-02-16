@@ -14,6 +14,8 @@ class Head {
 
     boolean tracking;
 
+    float noiseFreq = random(0.003, 0.01);
+
     public Head(float x, float y) {
         this.x = x;
         this.y = y;
@@ -22,7 +24,7 @@ class Head {
 
         /* These two values look directly out the screen */
         /* This is only a function of the position */
-        this.baseRotX = 0;
+        this.baseRotX = map(this.y, 120, 600, -0.291, 0.234);
         this.baseRotZ = map(this.x, 300, 980, -0.462, 0.520);
         
         this.rotX = 0;
@@ -46,20 +48,34 @@ class Head {
             float diffX = mouseX - this.x;
             float diffY = mouseY - this.y;
 
-            float targetRZ = constrain(
-                map(diffX, -width / 2, width / 2, HALF_PI, - HALF_PI),
-                -HALF_PI, HALF_PI
-            );
-            float targetRX = constrain(
-                map(diffY, -height / 2, height / 2, PI / 6, - PI / 6),
-                -PI / 4, PI / 4
-            );
-            
+            float targetRZ = map(diffX, -width / 2, width / 2, HALF_PI, - HALF_PI);
+            float targetRX = map(diffY, -height / 2, height / 2, PI / 6, - PI / 6);
+
+            if (mode == 1) {
+                targetRZ += this.baseRotZ;
+            } else if (mode == 2) {
+                targetRX += this.baseRotX;
+            } else if (mode == 3) {
+                targetRZ += this.baseRotZ;
+                targetRX += this.baseRotX;
+            } else if (mode == 4) {
+                targetRZ = this.baseRotZ;
+                targetRX = this.baseRotX;
+            }
+
+            if (noiseMove) {
+                targetRZ += (2 * noise(this.x + frameCount * this.noiseFreq) - 1) * 0.25;
+                targetRX += (2 * noise(this.y + frameCount * this.noiseFreq) - 1) * 0.15;
+            }
+
+            targetRZ = constrain(targetRZ, -HALF_PI, HALF_PI);
+            targetRX = constrain(targetRX + this.baseRotX, -PI / 4, PI / 4);
+
             this.rotZ = lerp(this.rotZ, targetRZ, this.inertiaX);
             this.rotX = lerp(this.rotX, targetRX, this.inertiaZ);
             
-            rotateZ(this.baseRotZ + this.rotZ);
-            rotateX(this.baseRotX + this.rotX);
+            rotateZ(this.rotZ);
+            rotateX(this.rotX);
             
             rotateY((targetRZ - this.rotZ) * 0.3);
         }
@@ -69,15 +85,10 @@ class Head {
         popMatrix();
 
         //debug
-        fill(255);
-        noStroke();
-        text("(" + str(this.rotX) + ", " + str(this.rotZ) + ")", 80, -20);
-        text("(" + str(this.x) + ", " + str(this.y) + ")", 80, 0);
-        // strokeWeight(3);
-        // stroke(255, 0, 0);
-        // line(0, 0, 100, 0);
-        // stroke(0, 255, 0);
-        // line(0, 0, 0, 100);
+        // fill(255);
+        // noStroke();
+        // text("(" + str(this.rotX) + ", " + str(this.rotZ) + ")", 80, -20);
+        // text("(" + str(this.x) + ", " + str(this.y) + ")", 80, 0);
         
         popMatrix();
         
