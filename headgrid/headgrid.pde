@@ -19,12 +19,12 @@ void draw() {
     background(20);
     
     if (mousePressed) {
-        	lookAtMouse = false;
-        	px = mouseX;
-        	py = mouseY;
-      	} else{
-        	lookAtMouse = true;
-      	}
+		lookAtMouse = false;
+		px = mouseX;
+		py = mouseY;
+	} else{
+		lookAtMouse = true;
+	}
     
     //lights();
     directionalLight(102, 102, 102, 0, 0, - 1);
@@ -47,16 +47,20 @@ void drawTestHead() {
     scale(10);
     
     rotateX(HALF_PI);
+
     if (lookAtMouse) {
-        	float targetRZ = map(mouseX, 0, width, HALF_PI, - HALF_PI);
-        	float targetRX = map(mouseY, 0, height, PI / 6, - PI / 6);
-        	
-        	rZ = lerp(rZ, targetRZ, 0.2);
-        	rX = lerp(rX, targetRX, 0.1);
-        	
-        	rotateZ(rZ);
-        	rotateX(rX);
-      	}
+		float diffX = mouseX - px;
+		float diffY = mouseY - py;
+
+		float targetRZ = map(diffX, -width / 2, width / 2, HALF_PI, - HALF_PI);
+		float targetRX = map(diffY, -height / 2, height / 2, PI / 6, - PI / 6);
+		
+		rZ = lerp(rZ, targetRZ, 0.2);
+		rX = lerp(rX, targetRX, 0.1);
+		
+		rotateZ(rZ);
+		rotateX(rX);
+	}
     
     specular(150, 150, 150);
     shape(head, 0, 0);
