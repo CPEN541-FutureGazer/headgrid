@@ -35,8 +35,8 @@ class HeadModel {
     }
 
     public HeadModel(PShape shape) {
-        this.model = shape;
         this();
+        this.model = shape;
     }
 
     public void draw() {
