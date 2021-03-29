@@ -4,7 +4,7 @@ class HeadView extends View {
     float rotX;
     float rotY;
     float baseRotX;
-    float baserotY;
+    float baseRotY;
     
     float lerpRX;
     float lerpRY;
@@ -38,7 +38,7 @@ class HeadView extends View {
         /* These two values look directly out the screen */
         /* This is only a function of the position */
         this.baseRotX = map(this.y, 120, 600, - 0.291, 0.234);
-        this.baserotY = map(this.x, 300, 980, - 0.462, 0.520);
+        this.baseRotY = map(this.x, 300, 980, - 0.462, 0.520);
     }
     
     @Override
@@ -47,11 +47,11 @@ class HeadView extends View {
         translate(this.x, this.y, this.z);
 
         float targetScale = this.scale;
-        // if (attentionScale) {
-        //     float diffRZ = this.rotY - this.baserotY;
-        //     float diffRX = this.rotX - this.baseRotX;
-        //     targetScale *= map(abs(diffRZ * diffRX), 0, 1, 1.2, 0.4);
-        // }
+        if (this.scaleAttention) {
+            float diffRZ = this.rotY - this.baseRotY;
+            float diffRX = this.rotX - this.baseRotX;
+            targetScale *= map(abs(diffRZ * diffRX), 0, 1, 1.2, 0.4);
+        }
         scale(targetScale);
 
         pushMatrix();
@@ -70,12 +70,12 @@ class HeadView extends View {
                     targetRY = map(diffX, - width / 2, width / 2, HALF_PI, - HALF_PI);
                     targetRX = map(diffY, - height / 2, height / 2, PI / 6, - PI / 6);
                     targetRX += this.baseRotX;
-                    targetRY += this.baserotY;
+                    targetRY += this.baseRotY;
                     break;
 
                 case ATT_STARE:
                     targetRX = this.baseRotX;
-                    targetRY = this.baserotY;
+                    targetRY = this.baseRotY;
                     break;
 
                 case ATT_RANDOM:
@@ -84,10 +84,10 @@ class HeadView extends View {
                     break;
             }
                 
-            // if (noiseMove) {
-            //     targetRY += (2 * noise(this.x + frameCount * this.noiseFreq) - 1) * 0.25;
-            //     targetRX += (2 * noise(this.y + frameCount * this.noiseFreq) - 1) * 0.15;
-            // }
+            if (this.isNoisy) {
+                targetRY += (2 * noise(this.x + frameCount * this.noiseFreq) - 1) * 0.25;
+                targetRX += (2 * noise(this.y + frameCount * this.noiseFreq) - 1) * 0.15;
+            }
             
             targetRY = constrain(targetRY, - HALF_PI, HALF_PI);
             targetRX = constrain(targetRX + this.baseRotX, - PI / 4, PI / 4);
@@ -96,7 +96,7 @@ class HeadView extends View {
             this.rotX = lerp(this.rotX, targetRX, this.lerpRX);
 
             // Head bobbing
-            // rotateZ((targetRY - this.rotY) * 0.3);
+            rotateZ((targetRY - this.rotY) * 0.3);
         }
         
         rotateY(-this.rotY);
@@ -108,11 +108,7 @@ class HeadView extends View {
         popMatrix();
 
         if (this.isFocused) {
-            // fill(255);
-            // text("Focus", 80, 0);
-            noFill();
-            strokeWeight(1);
-            stroke(255, 0, 0);
+            fill(255, 0.1);
             ellipse(0, 0, 20, 20);
         }
         

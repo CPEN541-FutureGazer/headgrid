@@ -88,18 +88,24 @@ void toggleNoise() {
 }
 
 void toggleScaleAttention() {
-    // Boolean n;
-    // Boolean flag = false;
-    // for (View v : g_views) {
-    //     if (v.isFocused) {
-    //         if (!flag) {
-    //             n = v.scaleAttention;
-    //             flag = true;
-    //         }
+Boolean n;
+    find: {
+        for (View v : g_views) {
+            if (v.isFocused) {
+                n = v.scaleAttention;
+                break find;
+            }
+        }
 
-    //         v.scaleAttention = !n;
-    //     }
-    // }
+        return;
+    }
+
+
+    for (View v : g_views) {
+        if (v.isFocused) {
+            v.scaleAttention = !n;
+        }
+    }
 }
 
 void setAttentionMode(AttentionMode mode) {
