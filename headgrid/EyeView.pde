@@ -19,14 +19,22 @@ class EyeView extends View {
     final int eyeTextureWidth = int(16 * this.scaleFactor);
     final int eyeTextureHeight = int(16 * this.scaleFactor);
 
+    int blinkTimer;
+
     public EyeView(float x, float y) {
         super(x, y);
 
         this.pupilRadius = 1.0;
 
-
-        /* Create eye mask */
+        /* Create eye mask and texture */
+        this.eyeTexture = createGraphics(eyeTextureWidth, eyeTextureHeight);
         this.createEyeMask();
+
+        this.resetBlinkTimer();
+    }
+
+    void resetBlinkTimer() {
+        blinkTimer = int(random(30, 600));
     }
 
     void createEyeMask() {
@@ -42,11 +50,17 @@ class EyeView extends View {
 
     void drawEyeTexture() {
 
+        if (this.blinkTimer <= 0) {
+            eyeTexture.beginDraw();
+            eyeTexture.background(0);
+            eyeTexture.endDraw();
+            return;
+        }
+
         /* Find distance and vector to target position */
         PVector diff = new PVector(this.targetX - this.x, this.targetY - this.y);
         diff.mult(0.3);
 
-        eyeTexture = createGraphics(eyeTextureWidth, eyeTextureHeight);
         eyeTexture.beginDraw();
         eyeTexture.background(255);
 
@@ -114,5 +128,11 @@ class EyeView extends View {
         }
 
         popMatrix();
+
+        this.blinkTimer--;
+
+        if (this.blinkTimer < -5) {
+            this.resetBlinkTimer();
+        }
     }
 }
