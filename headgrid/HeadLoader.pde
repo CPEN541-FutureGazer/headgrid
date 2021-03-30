@@ -12,6 +12,9 @@ HeadModel loadHead(int type) {
 
   } else if (type == 1) {
     hm.model = loadShape("heads/joe/TheRock2.obj");
+
+    hm.scale = 0.1;
+    hm.rz = PI;
   }
   
   return hm;
