@@ -1,5 +1,6 @@
+int g_nextViewID = 0;
+
 class View {
-    private static int nextId = 0;
     final int id;
 
     float x;
@@ -8,13 +9,13 @@ class View {
 
     float scale;
 
-    boolean isTracking;
+    boolean isEnabled;
     boolean isFocused;
     boolean isDebug;
 
     public View() {
-        this.id = this.nextId++;
-        this.isTracking = true;
+        this.id = g_nextViewID++;
+        this.isEnabled = true;
         this.isFocused = false;
         this.isDebug = false;
     }

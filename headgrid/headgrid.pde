@@ -22,25 +22,30 @@ void settings() {
 int activeId = 0;
 void setActive(int n) {
     if (heads.size() != 0) {
-        heads.get(activeId).tracking = false;
+        heads.get(activeId).isEnabled = false;
+        heads.get(activeId).isFocused = false;
         
         activeId = constrain(activeId + n, 0, heads.size() - 1);
-        heads.get(activeId).tracking = true;
+        heads.get(activeId).isEnabled = true;
+        heads.get(activeId).isFocused = true;
     }
 }
 
 void toggleTracking() {
     Boolean t = false;
     if (heads.size() != 0) {
-        t = heads.get(0).tracking;
+        t = heads.get(0).isEnabled;
     }
     for (int i = 0; i < heads.size(); i++) {
-        heads.get(i).tracking = !t;
+        heads.get(i).isEnabled = !t;
     }
 }
 
 void addHead() {
-    heads.add(new HeadView(0, 0));
+    heads.add(new HeadView(head, 0, 0));
+    if (heads.size() == 1) {
+        heads.get(0).isFocused = true;
+    }
     arrangeHeads();
 }
 
