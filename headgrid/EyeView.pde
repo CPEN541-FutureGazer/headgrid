@@ -12,7 +12,7 @@ class EyeView extends View {
     float eyeRightX = 4.0;
     float eyeY = 0.0;
     float eyeHeightR = 5.0;
-    float eyeWidthR = 8.0;
+    float eyeWidthR = 7.0;
     float scaleFactor = 32;
     float pupilRadius;
 
@@ -35,7 +35,6 @@ class EyeView extends View {
         eyeMask = createGraphics(eyeTextureWidth, eyeTextureHeight);
         eyeMask.beginDraw();
         eyeMask.background(0);
-        // noStroke();
         eyeMask.fill(255);
         eyeMask.ellipse(eyeTextureWidth / 2, eyeTextureWidth / 2, r2, r1);
         eyeMask.endDraw();
@@ -56,9 +55,9 @@ class EyeView extends View {
         float rp = this.pupilRadius * scaleFactor;
 
         eyeTexture.pushMatrix();
-        float offsetXBound = this.eyeWidthR * scaleFactor * 0.4;
+        float offsetXBound = this.eyeWidthR * scaleFactor * 0.3;
         float offsetX = constrain(diff.x, -offsetXBound, offsetXBound);
-        float offsetYBound = this.eyeHeightR * scaleFactor * 0.4;
+        float offsetYBound = this.eyeHeightR * scaleFactor * 0.3;
         float offsetY = constrain(diff.y, -offsetYBound, offsetYBound);
         eyeTexture.translate(eyeTextureWidth / 2 + offsetX, eyeTextureWidth / 2 + offsetY);
         eyeTexture.fill(60, 40, 20);
@@ -73,8 +72,27 @@ class EyeView extends View {
     @Override
     public void draw() {
 
-        targetX = mouseX;
-        targetY = mouseY;
+        switch (this.attentionMode) {
+            case ATT_NORMAL:
+                targetX = mouseX;
+                targetY = mouseY;
+                break;
+            case ATT_STARE:
+                targetX = this.x;
+                targetY = this.y;
+                break;
+            case ATT_RANDOM:
+                float randomR = map(noise(frameCount * 0.01 + this.id), 0, 1, 0, width / 2);
+                float randomTheta = map(noise(frameCount * 0.01 + this.id), 0, 1, 0, TWO_PI);
+                targetX = this.x + randomR * cos(randomTheta);
+                targetY = this.y + randomR * sin(randomTheta);
+                break;
+        }
+
+        if (this.isNoisy) {
+            targetX += (2 * noise(this.x + frameCount * this.noiseFreq) - 1) * 200;
+            targetY += (2 * noise(this.y + frameCount * this.noiseFreq) - 1) * 100;
+        }
 
         pushMatrix();
         translate(this.x, this.y);
@@ -88,7 +106,8 @@ class EyeView extends View {
 
         this.drawEyeTexture();
         this.eyeTexture.mask(this.eyeMask);
-        image(this.eyeTexture, -8, -8, 16, 16);
+        image(this.eyeTexture, -8 + this.eyeLeftX, -8 + this.eyeY, 16, 16);
+        image(this.eyeTexture, -8 + this.eyeRightX, -8 + this.eyeY, 16, 16);
 
         if (this.isFocused) {
             drawFocused();

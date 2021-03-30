@@ -14,12 +14,25 @@ class View {
     Boolean isNoisy;
     Boolean scaleAttention;
 
+    /* Attention mode */
+    AttentionMode attentionMode;
+
+    float lerpRX;
+    float lerpRY;
+
+    float noiseFreq = random(0.003, 0.01);
+
     public View() {
         this.id = g_nextViewID++;
         this.isEnabled = true;
         this.isFocused = false;
         this.isNoisy = false;
         this.scaleAttention = false;
+
+        attentionMode = AttentionMode.ATT_NORMAL;
+
+        this.lerpRX = random(0.15, 0.3);
+        this.lerpRY = random(0.05, 0.15);
     }
 
     public View(float x, float y) {

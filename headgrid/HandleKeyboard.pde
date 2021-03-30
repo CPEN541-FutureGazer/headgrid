@@ -120,10 +120,7 @@ Boolean n;
 void setAttentionMode(AttentionMode mode) {
     for (View v : g_views) {
         if (v.isFocused) {
-            if (v instanceof HeadView) {
-                HeadView hv = (HeadView) v;
-                hv.attentionMode = mode;
-            }
+            v.attentionMode = mode;
         }
     }
 }

@@ -5,17 +5,9 @@ class HeadView extends View {
     float rotY;
     float baseRotX;
     float baseRotY;
-    
-    float lerpRX;
-    float lerpRY;
-    
-    float noiseFreq = random(0.003, 0.01);
 
     /* Reference to the head object */
     HeadModel model;
-
-    /* Attention mode */
-    AttentionMode attentionMode;
     
     public HeadView(HeadModel model, float x, float y) {
         super(x, y, 0);
@@ -24,11 +16,6 @@ class HeadView extends View {
         
         this.rotX = 0;
         this.rotY = 0;
-        
-        this.lerpRX = random(0.15, 0.3);
-        this.lerpRY = random(0.05, 0.15);
-
-        attentionMode = AttentionMode.ATT_NORMAL;
     }
     
     @Override
