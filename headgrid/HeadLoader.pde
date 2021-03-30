@@ -6,8 +6,6 @@ HeadModel loadHead(int type) {
 
   if (type == 0) {
     hm.model = loadShape("heads/head.obj");
-
-    hm.scale = 10;
     hm.rx = HALF_PI;
 
   } else if (type == 1) {

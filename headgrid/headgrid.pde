@@ -2,11 +2,18 @@ HeadModel head;
 
 Boolean lookAtMouse = false;
 
+<<<<<<< HEAD
 float cameraZ;
 
 Head[] heads = new Head[9];
 
 int mode = 0;
+=======
+ArrayList<HeadView> heads;
+
+int mode = 1;
+int gid = 0;
+>>>>>>> 3026bf5... refactored to view
 
 void settings() {
     size(1280, 720, P3D);
@@ -33,7 +40,7 @@ void toggleTracking() {
 }
 
 void addHead() {
-    heads.add(new Head(0, 0));
+    heads.add(new HeadView(0, 0));
     arrangeHeads();
 }
 
@@ -46,9 +53,9 @@ void removeHead() {
 void setup() {
     background(20);
     
-    head = loadHead(1);
+    head = loadHead(0);
     
-    heads = new ArrayList<Head>();
+    heads = new ArrayList<HeadView>();
 }
 
 void draw() {
@@ -68,7 +75,7 @@ void draw() {
     }
 }
     
-voidkeyPressed() {
+void keyPressed() {
     if(key >= '0' && key <= '9') {
         mode = key - '0';
     }
