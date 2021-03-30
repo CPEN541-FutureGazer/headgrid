@@ -1,4 +1,4 @@
-PShape head;
+HeadModel head;
 
 Boolean lookAtMouse = false;
 
