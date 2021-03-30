@@ -6,6 +6,8 @@ int mode = 1;
 int gid = 0;
 Boolean g_debug = false;
 
+AddType g_addType = AddType.ADD_HEAD;
+
 ArrayList<View> g_views;
 
 void settings() {

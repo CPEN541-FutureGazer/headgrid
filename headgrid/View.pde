@@ -24,7 +24,7 @@ class View {
 
     public View(float x, float y) {
         this();
-        this.setPosition(x, y);
+        this.setPosition(x, y, 0);
     }
 
     public View(float x, float y, float z) {

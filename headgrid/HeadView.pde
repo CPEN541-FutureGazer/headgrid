@@ -108,8 +108,7 @@ class HeadView extends View {
         popMatrix();
 
         if (this.isFocused) {
-            fill(255, 0.1);
-            ellipse(0, 0, 20, 20);
+            drawFocused();
         }
         
         popMatrix();

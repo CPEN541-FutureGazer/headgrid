@@ -36,8 +36,17 @@ void keyPressed() {
 
     /* Application controls */
     if (key == 'd') { g_debug = !g_debug; }
-    if (keyCode == UP) { addHead(); }
-    if (keyCode == DOWN) { removeHead(); }
+    if (keyCode == UP) { addView(); }
+    if (keyCode == DOWN) { removeView(); }
+
+    /* Add / remove view mode set */
+    if (key == 'e') {
+        if (g_addType == AddType.ADD_HEAD) {
+            g_addType = AddType.ADD_EYE;
+        } else {
+            g_addType = AddType.ADD_HEAD;
+        }
+    }
 }
 
 
@@ -119,15 +128,20 @@ void setAttentionMode(AttentionMode mode) {
     }
 }
 
-void addHead() {
-    g_views.add(new HeadView(head, 0, 0));
+void addView() {
+    if (g_addType == AddType.ADD_HEAD) {
+        g_views.add(new HeadView(head, 0, 0));
+    } else {
+        g_views.add(new EyeView(0, 0));
+    }
+
     if (g_views.size() == 1) {
         g_views.get(0).isFocused = true;
     }
     arrangeViews();
 }
 
-void removeHead() {
+void removeView() {
     if (g_views.size() == 0) return;
     g_views.remove(g_views.size() - 1);
     arrangeViews();
