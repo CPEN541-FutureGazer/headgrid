@@ -11,11 +11,15 @@ class View {
 
     boolean isEnabled;
     boolean isFocused;
+    Boolean isNoisy;
+    Boolean scaleAttention;
 
     public View() {
         this.id = g_nextViewID++;
         this.isEnabled = true;
         this.isFocused = false;
+        this.isNoisy = false;
+        this.scaleAttention = false;
     }
 
     public View(float x, float y) {

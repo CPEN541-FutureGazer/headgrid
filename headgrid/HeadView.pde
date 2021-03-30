@@ -28,7 +28,7 @@ class HeadView extends View {
         this.lerpRX = random(0.15, 0.3);
         this.lerpRY = random(0.05, 0.15);
 
-        attentionMode = AttentionMode.NORMAL;
+        attentionMode = AttentionMode.ATT_NORMAL;
     }
     
     @Override
@@ -66,19 +66,19 @@ class HeadView extends View {
             float targetRY = 0;
 
             switch (this.attentionMode) {
-                case NORMAL:
+                case ATT_NORMAL:
                     targetRY = map(diffX, - width / 2, width / 2, HALF_PI, - HALF_PI);
                     targetRX = map(diffY, - height / 2, height / 2, PI / 6, - PI / 6);
                     targetRX += this.baseRotX;
                     targetRY += this.baserotY;
                     break;
 
-                case STARE:
+                case ATT_STARE:
                     targetRX = this.baseRotX;
                     targetRY = this.baserotY;
                     break;
 
-                case RANDOM:
+                case ATT_RANDOM:
                     targetRX = map(noise(frameCount * 0.01 + PI * this.id), 0, 1, HALF_PI, - HALF_PI);
                     targetRY = map(noise(frameCount * 0.01 - PI * this.id), 0, 1, HALF_PI, - HALF_PI);
                     break;

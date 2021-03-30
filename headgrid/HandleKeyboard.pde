@@ -1,26 +1,21 @@
 void keyPressed() {
 
     /* Selection keys */
-    if (key == 'a') {
-        /* Select all */
-        selectAll();
-    }
-
-    if (key == 'q') {
-        /* Select none */
-        selectNone();
-    }
+    if (key == 'a') { selectAll(true); }
+    if (key == 'q') { selectAll(false); }
+    if (keyCode == LEFT) { selectNextFocused(-1); }
+    if (keyCode == RIGHT) { selectNextFocused(1); }
 
     /* Set attention mode */
     if (key == '1') {
         /* set selected view's attention mode to normal */
-        setAttentionMode(NORMAL);
+        setAttentionMode(AttentionMode.ATT_NORMAL);
     } else if (key == '2') {
         /* Set selected view's attention mode to stare */
-        setAttentionMode(STARE);
+        setAttentionMode(AttentionMode.ATT_STARE);
     } else if (key == '3') {
         /* Set selected view's attention mode to random */
-        setAttentionMode(RANDOM);
+        setAttentionMode(AttentionMode.ATT_RANDOM);
     }
 
     /* Other toggles */
@@ -34,75 +29,100 @@ void keyPressed() {
         toggleScaleAttention();
     }
 
-
-    /* Application controls */
-
-    /* Debug flag */
-    if (key == 'd') {
-        g_debug = !g_debug;
-    }
-    
-    if (keyCode == UP) {
-        addHead();
-    }
-    
-    if (keyCode == DOWN) {
-        removeHead();
-    }
-    
-    if (keyCode == LEFT) {
-        selectNextFocused(-1);
-    }
-    
-    if (keyCode == RIGHT) {
-        selectNextFocused(1);
-    }
-    
     if (key == 't') {
+        /* toggle tracking by enabling/disabling */
         toggleTracking();
     }
+
+    /* Application controls */
+    if (key == 'd') { g_debug = !g_debug; }
+    if (keyCode == UP) { addHead(); }
+    if (keyCode == DOWN) { removeHead(); }
 }
 
 
-void selectAll() {
-}
-
-void selectNone() {
-
+void selectAll(Boolean select) {
+    for (View v : g_views) {
+        v.isFocused = select;
+    }
 }
 
 int g_activeId = 0;
 void selectNextFocused(int n) {
-    if (heads.size() != 0) {
-        heads.get(g_activeId).isEnabled = false;
-        heads.get(g_activeId).isFocused = false;
-        
-        g_activeId = constrain(g_activeId + n, 0, heads.size() - 1);
-        heads.get(g_activeId).isEnabled = true;
-        heads.get(g_activeId).isFocused = true;
+    if (g_views.size() != 0) {
+        g_views.get(g_activeId).isFocused = false;
+        g_activeId = constrain(g_activeId + n, 0, g_views.size() - 1);
+        g_views.get(g_activeId).isFocused = true;
     }
 }
 
 void toggleTracking() {
     Boolean t = false;
-    if (heads.size() != 0) {
-        t = heads.get(0).isEnabled;
+    if (g_views.size() != 0) {
+        t = g_views.get(0).isEnabled;
     }
-    for (int i = 0; i < heads.size(); i++) {
-        heads.get(i).isEnabled = !t;
+    for (int i = 0; i < g_views.size(); i++) {
+        g_views.get(i).isEnabled = !t;
+    }
+}
+
+void toggleNoise() {
+    Boolean n;
+    find: {
+        for (View v : g_views) {
+            if (v.isFocused) {
+                n = v.isNoisy;
+                break find;
+            }
+        }
+
+        return;
+    }
+
+
+    for (View v : g_views) {
+        if (v.isFocused) {
+            v.isNoisy = !n;
+        }
+    }
+}
+
+void toggleScaleAttention() {
+    // Boolean n;
+    // Boolean flag = false;
+    // for (View v : g_views) {
+    //     if (v.isFocused) {
+    //         if (!flag) {
+    //             n = v.scaleAttention;
+    //             flag = true;
+    //         }
+
+    //         v.scaleAttention = !n;
+    //     }
+    // }
+}
+
+void setAttentionMode(AttentionMode mode) {
+    for (View v : g_views) {
+        if (v.isFocused) {
+            if (v instanceof HeadView) {
+                HeadView hv = (HeadView) v;
+                hv.attentionMode = mode;
+            }
+        }
     }
 }
 
 void addHead() {
-    heads.add(new HeadView(head, 0, 0));
-    if (heads.size() == 1) {
-        heads.get(0).isFocused = true;
+    g_views.add(new HeadView(head, 0, 0));
+    if (g_views.size() == 1) {
+        g_views.get(0).isFocused = true;
     }
-    arrangeHeads();
+    arrangeViews();
 }
 
 void removeHead() {
-    if (heads.size() == 0) return;
-    heads.remove(heads.size() - 1);
-    arrangeHeads();
+    if (g_views.size() == 0) return;
+    g_views.remove(g_views.size() - 1);
+    arrangeViews();
 }

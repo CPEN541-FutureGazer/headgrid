@@ -1,5 +1,5 @@
 enum AttentionMode {
-    NORMAL,
-    STARE,
-    RANDOM
+    ATT_NORMAL,
+    ATT_STARE,
+    ATT_RANDOM
 }
