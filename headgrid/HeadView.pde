@@ -1,8 +1,3 @@
-enum Attention {
-    NORMAL,
-    STARE,
-    RANDOM
-}
 
 class HeadView extends View {
 
@@ -20,7 +15,7 @@ class HeadView extends View {
     HeadModel model;
 
     /* Attention mode */
-    Attention attentionMode;
+    AttentionMode attentionMode;
     
     public HeadView(HeadModel model, float x, float y) {
         super(x, y, 0);
@@ -33,7 +28,7 @@ class HeadView extends View {
         this.lerpRX = random(0.15, 0.3);
         this.lerpRY = random(0.05, 0.15);
 
-        attentionMode = Attention.NORMAL;
+        attentionMode = AttentionMode.NORMAL;
     }
     
     @Override
@@ -50,11 +45,7 @@ class HeadView extends View {
     public void draw() {
         pushMatrix();
         translate(this.x, this.y, this.z);
-        pushMatrix();
-        
-        float diffX = mouseX - this.x;
-        float diffY = mouseY - this.y;
-        
+
         float targetScale = this.scale;
         // if (attentionScale) {
         //     float diffRZ = this.rotY - this.baserotY;
@@ -62,6 +53,11 @@ class HeadView extends View {
         //     targetScale *= map(abs(diffRZ * diffRX), 0, 1, 1.2, 0.4);
         // }
         scale(targetScale);
+
+        pushMatrix();
+        
+        float diffX = mouseX - this.x;
+        float diffY = mouseY - this.y;
         
         if (this.isEnabled) {
 
@@ -112,21 +108,25 @@ class HeadView extends View {
         popMatrix();
 
         if (this.isFocused) {
-            fill(255);
-            text("Focus", 80, 0);
-        }
-        
-        /* Debug */
-        if (this.isDebug) {
-            fill(255);
-            noStroke();
-            text(this.scale, 80, -20);
-            text("(" + str(this.x) + ", " + str(this.y) + ")", 80, 0);
+            // fill(255);
+            // text("Focus", 80, 0);
+            noFill();
+            strokeWeight(1);
+            stroke(255, 0, 0);
+            ellipse(0, 0, 20, 20);
         }
         
         popMatrix();
         
-        if (this.isDebug && this.isEnabled) {
+        /* Debug */
+        if (g_debug) {
+            fill(255);
+            noStroke();
+            text(this.scale, this.x + 80, this.y - 20, 100);
+            text("(" + str(this.x) + ", " + str(this.y) + ")", this.x, this.y, 100);
+        }
+
+        if (g_debug && this.isEnabled) {
             strokeWeight(1);
             stroke(255, 0, 255);
             line(this.x, this.y, this.z, mouseX, mouseY, 0);

@@ -11,13 +11,11 @@ class View {
 
     boolean isEnabled;
     boolean isFocused;
-    boolean isDebug;
 
     public View() {
         this.id = g_nextViewID++;
         this.isEnabled = true;
         this.isFocused = false;
-        this.isDebug = false;
     }
 
     public View(float x, float y) {
