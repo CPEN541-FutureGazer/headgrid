@@ -13,7 +13,7 @@ class EyeView extends View {
     float eyeY = 0.0;
     float eyeHeightR = 5.0;
     float eyeWidthR = 7.0;
-    float scaleFactor = 32;
+    float scaleFactor = 8;
     float pupilRadius;
 
     final int eyeTextureWidth = int(16 * this.scaleFactor);
