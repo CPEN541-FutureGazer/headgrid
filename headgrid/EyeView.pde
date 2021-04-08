@@ -2,9 +2,6 @@
 
 class EyeView extends View {
 
-    float targetX = 0;
-    float targetY = 0;
-
     PGraphics eyeTexture;
     PGraphics eyeMask;
 
@@ -88,8 +85,10 @@ class EyeView extends View {
 
         switch (this.attentionMode) {
             case ATT_NORMAL:
-                targetX = mouseX;
-                targetY = mouseY;
+                if (trackingMouse) {
+                    targetX = mouseX;
+                    targetY = mouseY;
+                }
                 break;
             case ATT_STARE:
                 targetX = this.x;
@@ -104,8 +103,8 @@ class EyeView extends View {
         }
 
         if (this.isNoisy) {
-            targetX += (2 * noise(this.x + frameCount * this.noiseFreq) - 1) * 200;
-            targetY += (2 * noise(this.y + frameCount * this.noiseFreq) - 1) * 100;
+            targetX += (2 * noise(this.x + frameCount * this.noiseFreq) - 1) * 100;
+            targetY += (2 * noise(this.y + frameCount * this.noiseFreq) - 1) * 50;
         }
 
         pushMatrix();

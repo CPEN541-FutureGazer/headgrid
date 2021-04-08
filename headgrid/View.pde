@@ -16,6 +16,11 @@ class View {
 
     Boolean isProtagonist;
 
+    Boolean trackingMouse;
+
+    float targetX = 0;
+    float targetY = 0;
+
     /* Attention mode */
     AttentionMode attentionMode;
 
@@ -36,6 +41,8 @@ class View {
         isProtagonist = false;
 
         attentionMode = AttentionMode.ATT_NORMAL;
+
+        trackingMouse = true;
 
         this.lerpRX = random(0.15, 0.3);
         this.lerpRY = random(0.05, 0.15);

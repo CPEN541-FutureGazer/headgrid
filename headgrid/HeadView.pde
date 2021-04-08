@@ -1,14 +1,10 @@
 
 class HeadView extends View {
-    float targetX;
-    float targetY;
 
     float rotX;
     float rotY;
     float baseRotX;
     float baseRotY;
-
-    Boolean trackingMouse = false;
 
     /* Reference to the head object */
     HeadModel model;

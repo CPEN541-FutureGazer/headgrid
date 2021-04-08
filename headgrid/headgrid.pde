@@ -1,6 +1,8 @@
 import processing.video.*;
 
 JSONObject config;
+JSONArray events;
+int eventIndex = 0;
 
 HeadModel head;
 
@@ -64,19 +66,21 @@ void setup() {
     }
 
     g_highlightMouse = config.getBoolean("highlightMouse");
-    g_displayNamePlates = config.getBoolean("displayNamePlates");
+    g_displayNamePlates = config.getBoolean("displayNamePlates"); //<>//
 
     g_enableKeyboard = config.getBoolean("enableKeyboard");
 
     JSONArray configParticipants = config.getJSONObject("init").getJSONArray("participants");
     populateSceneWithConfig(configParticipants);
+
+    events = config.getJSONArray("events");
 }
 
 void draw() {
     background(33);
-    // fill(255);
-    // noStroke();
-    // text(int(frameRate) + " mode: " + str(mode) + ", aid: " + str(activeId), 20, 20);
+    fill(255);
+    noStroke();
+    text(int(frameRate) + " : " + str(frameCount), 20, 20);
     
     directionalLight(255, 255, 255, 0, 1, - 1);
     ambient(50, 50, 50);
@@ -103,6 +107,9 @@ void draw() {
             image(nameOverlayImage, 0, 0, width, height);
         }   
     }
+
+    /* Execute potential events happening on this frame */
+    while(executeNextEvent(frameCount));
 }
 
 void populateSceneWithConfig(JSONArray arr) {
@@ -141,4 +148,98 @@ void populateSceneWithConfig(JSONArray arr) {
     }
 
     arrangeViews();
+}
+
+// executes the pre-programmed event imported from the config file
+Boolean executeNextEvent(int f) {
+    if (events.size() == 0 || eventIndex == events.size()) {
+        return false;
+    }
+
+    JSONObject nextEvent = events.getJSONObject(eventIndex);
+    int nextFrame = nextEvent.getInt("frame");
+    if (nextFrame < f) {
+        println("ERROR!");
+        return false;
+    } else if (nextFrame > f) {
+        return false;
+    }
+
+    String action = nextEvent.getString("action"); //<>//
+
+    if (action.equals("setMode")) { //<>//
+        String modeStr = nextEvent.getString("value");
+
+        AttentionMode newMode = AttentionMode.ATT_NORMAL;
+        if (modeStr.equals("ATT_NORMAL")) {
+            newMode = AttentionMode.ATT_NORMAL;
+        } else if (modeStr.equals("ATT_STARE")) {
+            newMode = AttentionMode.ATT_STARE;
+        } else if (modeStr.equals("ATT_RANDOM")) {
+            newMode = AttentionMode.ATT_RANDOM;
+        }
+
+        JSONArray targets = nextEvent.getJSONArray("target");
+        for (int i = 0; i < targets.size(); i++) {
+            int id = targets.getInt(i);
+
+            // FIXME: not the most effiicent way but whatever
+            for (View v: g_views) {
+                if (v.id == id) {
+                    v.attentionMode = newMode;
+                    break;
+                }
+            }
+        }
+    } else if (action.equals("setWobble")) {
+        Boolean wobble = nextEvent.getBoolean("value");
+
+        JSONArray targets = nextEvent.getJSONArray("target");
+        for (int i = 0; i < targets.size(); i++) {
+            int id = targets.getInt(i);
+
+            // FIXME: not the most effiicent way but whatever
+            for (View v: g_views) {
+                if (v.id == id) {
+                    v.isNoisy = wobble;
+                    break;
+                }
+            }
+        }
+    } else if (action.equals("setViewTargetId")) {
+        int viewTargetId = nextEvent.getInt("value");
+
+        float targetX = 0;
+        float targetY = 0;
+        for (View v : g_views) {
+            if (v.id == viewTargetId) {
+                targetX = v.x;
+                targetY = v.y;
+                break;
+            }
+        }
+
+        JSONArray targets = nextEvent.getJSONArray("target");
+        for (int i = 0; i < targets.size(); i++) {
+            int id = targets.getInt(i);
+
+            // FIXME: not the most effiicent way but whatever
+            for (View v: g_views) {
+                if (v.id == id) {
+                    v.targetX = targetX;
+                    v.targetY = targetY;
+                    break;
+                }
+            }
+        }
+    } else if (action.equals("stop")) {
+        println("Stopped!");
+        exit();
+    } else {
+        println("Error, unidentified action: " + action); //<>//
+        return false;
+    }
+
+    eventIndex++;
+    return true;
 }

@@ -18,13 +18,13 @@
             {
                 "id": 2,
                 "name": "Johnny Ove",
-                "head3d": false,
+                "head3d": true,
                 "mode": "ATT_RANDOM"
             },
             {
                 "id": 3,
                 "name": "Tom Cole",
-                "head3d": false,
+                "head3d": true,
                 "mode": "ATT_RANDOM"
             },
             {
@@ -41,12 +41,6 @@
             "target": [1, 2, 3, 4],
             "action": "setMode",
             "value": "ATT_STARE"
-        },
-        {
-            "frame": 60,
-            "target": [1, 2, 3, 4],
-            "action": "setWobble",
-            "value": true
         },
         {
             "frame": 660,
