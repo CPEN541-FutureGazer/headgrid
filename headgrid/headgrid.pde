@@ -33,6 +33,8 @@ PImage zoomUI;
 
 Capture webcam;
 
+Boolean g_finished = false;
+
 void settings() {
     size(1280, 720, P3D);
 }
@@ -89,14 +91,23 @@ void draw() {
         lightFalloff(1.0, 0.005, 0.0001);
         pointLight(50, 255, 100, mouseX, mouseY, 100);
     }
+
+    // draw UI control
+    g_uiControl.draw();
+
+    // finished?
+    if (g_finished) {
+        textSize(40);
+        text("Experiment ended.", width / 2, height / 2 - 40);
+        text("Press \"Leave\" button to finish.", width / 2, height / 2 + 10);
+        textSize(14);
+        return;
+    }
     
     /* Draw */
     for (View v : g_views) {
         v.draw();
     }
-
-    // draw UI control
-    g_uiControl.draw();
 
     if (g_displayNamePlates) {
         float nameOffsetZ = 150;
@@ -156,7 +167,7 @@ Boolean executeNextEvent(int f) {
         return false;
     }
 
-    JSONObject nextEvent = events.getJSONObject(eventIndex);
+    JSONObject nextEvent = events.getJSONObject(eventIndex); //<>//
     int nextFrame = nextEvent.getInt("frame");
     if (nextFrame < f) {
         println("ERROR!");
@@ -225,7 +236,7 @@ Boolean executeNextEvent(int f) {
 
             // FIXME: not the most effiicent way but whatever
             for (View v: g_views) {
-                if (v.id == id) {
+                if (v.id == id) { //<>//
                     v.targetX = targetX;
                     v.targetY = targetY;
                     break;
@@ -234,7 +245,7 @@ Boolean executeNextEvent(int f) {
         }
     } else if (action.equals("stop")) {
         println("Stopped!");
-        exit();
+        g_finished = true;
     } else {
         println("Error, unidentified action: " + action); //<>//
         return false;

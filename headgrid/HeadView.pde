@@ -10,15 +10,12 @@ class HeadView extends View {
     HeadModel model;
     
     public HeadView(int id, HeadModel model, float x, float y) {
-        super(id, x, y, 0);
+        super(id, x, y);
 
         this.model = model;
         
         this.rotX = 0;
         this.rotY = 0;
-
-        targetX = width/2;
-        targetY = height/2;
     }
     
     @Override

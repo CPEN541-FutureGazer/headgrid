@@ -18,8 +18,8 @@ class View {
 
     Boolean trackingMouse;
 
-    float targetX = 0;
-    float targetY = 0;
+    float targetX;
+    float targetY;
 
     /* Attention mode */
     AttentionMode attentionMode;
@@ -31,7 +31,7 @@ class View {
 
     String name;
 
-    public View(int id) {
+    public View(int id, float x, float y) {
         this.id = id;
         this.isEnabled = true;
         this.isFocused = false;
@@ -42,21 +42,20 @@ class View {
 
         attentionMode = AttentionMode.ATT_NORMAL;
 
-        trackingMouse = true;
+        trackingMouse = false;
 
         this.lerpRX = random(0.15, 0.3);
         this.lerpRY = random(0.05, 0.15);
 
         this.name = "no_name";
-    }
 
-    public View(int id, float x, float y) {
-        this(id);
         this.setPosition(x, y, 0);
+        this.targetX = x;
+        this.targetY = y;
     }
 
     public View(int id, float x, float y, float z) {
-        this(id);
+        this(id, x, y);
         this.setPosition(x, y, z);
     }
 
