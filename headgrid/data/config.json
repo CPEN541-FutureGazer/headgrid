@@ -1,32 +1,36 @@
 {
+    "windowTitle": "FutureGazer Prototype",
     "uiModeControl": true,
+    "enableKeyboard": true,
     "displayParticipant": false,
     "partcipantName": "Sherlock Holmes",
-    "displayNameTags": true,
+    "highlightMouse": true,
+    "displayNamePlates": true,
+    "initSceneFromConfig": true,
     "init": {
         "participants": [
             {
                 "id": 1,
                 "name": "Stove Jebs",
-                "type": "head",
+                "head3d": true,
                 "mode": "ATT_RANDOM"
             },
             {
                 "id": 2,
                 "name": "Johnny Ove",
-                "type": "head",
+                "head3d": false,
                 "mode": "ATT_RANDOM"
             },
             {
                 "id": 3,
                 "name": "Tom Cole",
-                "type": "head",
+                "head3d": false,
                 "mode": "ATT_RANDOM"
             },
             {
                 "id": 4,
                 "name": "Bill Nye",
-                "type": "head",
+                "head3d": true,
                 "mode": "ATT_RANDOM"
             }
         ]

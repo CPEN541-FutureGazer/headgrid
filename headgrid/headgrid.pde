@@ -1,5 +1,6 @@
 import processing.video.*;
 
+JSONObject config;
 
 HeadModel head;
 
@@ -7,6 +8,7 @@ int gid = 0;
 Boolean g_debug = false;
 Boolean g_highlightMouse = false;
 boolean g_displayNamePlates = true;
+Boolean g_enableKeyboard = true;
 
 AddType g_addType = AddType.ADD_HEAD;
 
@@ -31,14 +33,16 @@ Capture webcam;
 
 void settings() {
     size(1280, 720, P3D);
-
-    g_uiControl = new UI(UIMode.UI_CONTROL);
 }
 
 void setup() {
-    surface.setTitle("Zoom Meeting");
+    config = loadJSONObject("config.json");
+
+    surface.setTitle(config.getString("windowTitle"));
+
     background(33);
     head = loadHead(0);
+
     g_views = new ArrayList<View>(); 
     
     // WIP: webcam capture
@@ -52,6 +56,20 @@ void setup() {
 
     //    webcam = new Capture(this, cameras[1]);
     //}
+
+    if (config.getBoolean("uiModeControl")) {
+        g_uiControl = new UI(UIMode.UI_CONTROL);
+    } else  {
+        g_uiControl = new UI(UIMode.MOCK_ZOOM);
+    }
+
+    g_highlightMouse = config.getBoolean("highlightMouse");
+    g_displayNamePlates = config.getBoolean("displayNamePlates");
+
+    g_enableKeyboard = config.getBoolean("enableKeyboard");
+
+    JSONArray configParticipants = config.getJSONObject("init").getJSONArray("participants");
+    populateSceneWithConfig(configParticipants);
 }
 
 void draw() {
@@ -86,4 +104,41 @@ void draw() {
         }   
     }
 }
-    
+
+void populateSceneWithConfig(JSONArray arr) {
+    for (int i = 0; i < arr.size(); i++) {
+        JSONObject p = arr.getJSONObject(i);
+
+        int newId = p.getInt("id");
+        String newName = p.getString("name");
+        Boolean is3D = p.getBoolean("head3d");
+        
+        String modeStr = p.getString("mode");
+        AttentionMode newMode;
+        if (modeStr.equals("ATT_NORMAL")) {
+            newMode = AttentionMode.ATT_NORMAL;
+        } else if (modeStr.equals("ATT_STARE")) {
+            newMode = AttentionMode.ATT_STARE;
+        } else if (modeStr.equals("ATT_RANDOM")) {
+            newMode = AttentionMode.ATT_RANDOM;
+        } else {
+            println("Invalid mode for id=" + str(newId));
+            continue;
+        }
+
+        // create the object and add it to view/scene
+        View newView;
+        if (is3D) {
+            newView = new HeadView(newId, head, 0, 0);
+        } else {
+            newView = new EyeView(newId, 0, 0);
+        }
+
+        newView.name = newName;
+        newView.attentionMode = newMode;
+
+        g_views.add(newView);
+    }
+
+    arrangeViews();
+}
