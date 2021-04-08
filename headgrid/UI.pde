@@ -36,10 +36,36 @@ class UI {
         quitButton.hoverFill = color(255, 0, 0);
         quitButton.hoverFillOpacity = 255;
 
-        //noCameraButton = new ButtonView();
-        //cameraButton = new ButtonView();
-        //avatar2DButton = new ButtonView();
-        //avatar3DButton = new ButtonView();
+        int buttons_w = 80;
+        int buttons_h = 26;
+        noCameraButton = new ButtonView(
+            10,
+            height - buttons_h - (55 - buttons_h) / 2,
+            buttons_w,
+            buttons_h,
+            "No cam"
+        );
+        cameraButton = new ButtonView(
+            2 * 10 + buttons_w,
+            height - buttons_h - (55 - buttons_h) / 2,
+            buttons_w,
+            buttons_h,
+            "Cam"
+        );
+        avatar2DButton = new ButtonView(
+            3 * 10 + 2 * buttons_w,
+            height - buttons_h - (55 - buttons_h) / 2,
+            buttons_w,
+            buttons_h,
+            "2D eyes"
+        );
+        avatar3DButton = new ButtonView(
+            4 * 10 + 3 * buttons_w,
+            height - buttons_h - (55 - buttons_h) / 2,
+            buttons_w,
+            buttons_h,
+            "3D avatar"
+        );
     }
 
     public void draw() {
@@ -55,6 +81,10 @@ class UI {
 
         // Draw buttons
         quitButton.draw();
+        noCameraButton.draw();
+        cameraButton.draw();
+        avatar2DButton.draw();
+        avatar3DButton.draw();
 
         this.update();
     }
