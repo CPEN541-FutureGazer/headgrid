@@ -127,9 +127,9 @@ void setAttentionMode(AttentionMode mode) {
 
 void addView() {
     if (g_addType == AddType.ADD_HEAD) {
-        g_views.add(new HeadView(head, 0, 0));
+        g_views.add(new HeadView(g_nextViewID++, head, 0, 0));
     } else {
-        g_views.add(new EyeView(0, 0));
+        g_views.add(new EyeView(g_nextViewID++, 0, 0));
     }
 
     if (g_views.size() == 1) {

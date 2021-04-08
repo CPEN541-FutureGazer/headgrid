@@ -6,6 +6,7 @@ HeadModel head;
 int gid = 0;
 Boolean g_debug = false;
 Boolean g_highlightMouse = false;
+boolean g_displayNamePlates = true;
 
 AddType g_addType = AddType.ADD_HEAD;
 
@@ -75,12 +76,14 @@ void draw() {
     // draw UI control
     g_uiControl.draw();
 
-    float nameOffsetZ = 150;
-    float scaleOffset = -0.00145 * nameOffsetZ + 1;
-    scale(scaleOffset);
-    translate(164, 88, nameOffsetZ);
-    if (nameOverlayImage != null) {
-        image(nameOverlayImage, 0, 0, width, height);
+    if (g_displayNamePlates) {
+        float nameOffsetZ = 150;
+        float scaleOffset = -0.00145 * nameOffsetZ + 1;
+        scale(scaleOffset);
+        translate(164, 88, nameOffsetZ);
+        if (nameOverlayImage != null) {
+            image(nameOverlayImage, 0, 0, width, height);
+        }   
     }
 }
     

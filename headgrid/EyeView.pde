@@ -21,8 +21,8 @@ class EyeView extends View {
 
     int blinkTimer;
 
-    public EyeView(float x, float y) {
-        super(x, y);
+    public EyeView(int id, float x, float y) {
+        super(id, x, y);
 
         this.pupilRadius = 1.0;
 

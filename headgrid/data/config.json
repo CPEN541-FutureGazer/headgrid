@@ -1,5 +1,33 @@
 {
     "uiModeControl": true,
+    "displayParticipant": false,
     "partcipantName": "Sherlock Holmes",
-    
+    "displayNameTags": true,
+    "init": {
+        "participants": [
+            {
+                "name": "Stove Jebs",
+                "type": "head",
+                "mode": "ATT_RANDOM"
+            },
+            {
+                "name": "Johnny Ove",
+                "type": "head",
+                "mode": "ATT_RANDOM"
+            },
+            {
+                "name": "Tom Cole",
+                "type": "head",
+                "mode": "ATT_RANDOM"
+            },
+            {
+                "name": "Bill Nye",
+                "type": "head",
+                "mode": "ATT_RANDOM"
+            }
+        ]
+    },
+    "events": {
+        ""
+    }
 }

@@ -11,8 +11,8 @@ class HeadView extends View {
     /* Reference to the head object */
     HeadModel model;
     
-    public HeadView(HeadModel model, float x, float y) {
-        super(x, y, 0);
+    public HeadView(int id, HeadModel model, float x, float y) {
+        super(id, x, y, 0);
 
         this.model = model;
         

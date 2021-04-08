@@ -1,7 +1,7 @@
 int g_nextViewID = 0;
 
 class View {
-    final int id;
+    int id;
 
     float x;
     float y;
@@ -26,8 +26,8 @@ class View {
 
     String name;
 
-    public View() {
-        this.id = g_nextViewID++;
+    public View(int id) {
+        this.id = id;
         this.isEnabled = true;
         this.isFocused = false;
         this.isNoisy = false;
@@ -43,13 +43,13 @@ class View {
         this.name = "no_name";
     }
 
-    public View(float x, float y) {
-        this();
+    public View(int id, float x, float y) {
+        this(id);
         this.setPosition(x, y, 0);
     }
 
-    public View(float x, float y, float z) {
-        this();
+    public View(int id, float x, float y, float z) {
+        this(id);
         this.setPosition(x, y, z);
     }
 

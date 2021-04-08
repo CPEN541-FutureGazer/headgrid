@@ -38,7 +38,9 @@ void arrangeViews() {
         }
     }
 
-    nameOverlayImage = generateNameMapImage();
+    if (g_displayNamePlates) {
+        nameOverlayImage = generateNameMapImage();
+    }
 }
 
 PGraphics generateNameMapImage() {
