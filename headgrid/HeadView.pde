@@ -1,5 +1,7 @@
 
 class HeadView extends View {
+    float targetX;
+    float targetY;
 
     float rotX;
     float rotY;
@@ -30,8 +32,14 @@ class HeadView extends View {
     
     @Override
     public void draw() {
+
+        targetX = mouseX;
+        targetY = mouseY;
+
         pushMatrix();
         translate(this.x, this.y, this.z);
+
+        pushMatrix();
 
         float targetScale = this.scale;
         if (this.scaleAttention) {
@@ -40,11 +48,9 @@ class HeadView extends View {
             targetScale *= map(abs(diffRZ * diffRX), 0, 1, 1.2, 0.4);
         }
         scale(targetScale);
-
-        pushMatrix();
         
-        float diffX = mouseX - this.x;
-        float diffY = mouseY - this.y;
+        float diffX = targetX - this.x;
+        float diffY = targetY - this.y;
         
         if (this.isEnabled) {
 
@@ -111,8 +117,8 @@ class HeadView extends View {
         if (g_debug && this.isEnabled) {
             strokeWeight(1);
             stroke(255, 0, 255);
-            line(this.x, this.y, this.z, mouseX, mouseY, 0);
-            ellipse(mouseX, mouseY, 5, 5);
+            line(this.x, this.y, this.z, targetX, targetY, 0);
+            ellipse(targetX, targetY, 5, 5);
         }
     }
 }

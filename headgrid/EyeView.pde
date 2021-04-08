@@ -110,6 +110,7 @@ class EyeView extends View {
 
         pushMatrix();
         translate(this.x, this.y);
+        pushMatrix();
 
         float targetScale = this.scale;
         if (this.scaleAttention) {
@@ -122,6 +123,7 @@ class EyeView extends View {
         this.eyeTexture.mask(this.eyeMask);
         image(this.eyeTexture, -8 + this.eyeLeftX, -8 + this.eyeY, 16, 16);
         image(this.eyeTexture, -8 + this.eyeRightX, -8 + this.eyeY, 16, 16);
+        popMatrix();
 
         if (this.isFocused) {
             drawFocused();

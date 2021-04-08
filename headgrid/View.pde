@@ -24,6 +24,8 @@ class View {
 
     float noiseFreq = random(0.003, 0.01);
 
+    String name;
+
     public View() {
         this.id = g_nextViewID++;
         this.isEnabled = true;
@@ -37,6 +39,8 @@ class View {
 
         this.lerpRX = random(0.15, 0.3);
         this.lerpRY = random(0.05, 0.15);
+
+        this.name = "no_name";
     }
 
     public View(float x, float y) {

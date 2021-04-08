@@ -37,4 +37,32 @@ void arrangeViews() {
             i++;
         }
     }
+
+    nameOverlayImage = generateNameMapImage();
+}
+
+PGraphics generateNameMapImage() {
+    PGraphics nameImg = createGraphics(width, height);
+    nameImg.beginDraw();
+    nameImg.textAlign(CENTER, CENTER);
+    nameImg.textSize(20);
+    nameImg.noStroke();
+    nameImg.rectMode(CENTER);
+    
+    for (View v : g_views) {
+        nameImg.pushMatrix();
+        nameImg.translate(v.x, v.y + 80);
+        nameImg.fill(0, 100);
+        nameImg.rect(0, 0, 100, 40);
+        nameImg.fill(255);
+        nameImg.text(v.name, 0, 0);
+        nameImg.popMatrix();
+    }
+
+    // nameImg.noFill();
+    // nameImg.stroke(255, 0, 0);
+    // nameImg.rectMode(CORNERS);
+    // nameImg.rect(0, 0, width, height);
+    nameImg.endDraw();
+    return nameImg;
 }
