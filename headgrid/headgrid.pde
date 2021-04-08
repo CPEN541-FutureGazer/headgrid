@@ -11,10 +11,23 @@ AddType g_addType = AddType.ADD_HEAD;
 
 ArrayList<View> g_views;
 
+String g_participantName = "Sherlock Holmes";
+
+// self viwe mode:
+// 0 - no view (name only)
+// 1 - camera
+// 2 - avatar (3d head)
+// 3 - avatar (2d eyes)
+int g_selfViewMode;
+
+UI g_uiControl;
+
 PImage zoomUI;
 
 void settings() {
     size(1280, 720, P3D);
+
+    g_uiControl = new UI(UIMode.UI_CONTROL);
 }
 
 void setup() {
@@ -42,7 +55,8 @@ void draw() {
     for (View v : g_views) {
         v.draw();
     }
-    
-    image(zoomUI, 0, height - 55, width, 55);
+
+    // draw UI control
+    g_uiControl.draw();
 }
     

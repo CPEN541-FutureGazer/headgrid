@@ -14,6 +14,8 @@ class View {
     Boolean isNoisy;
     Boolean scaleAttention;
 
+    Boolean isProtagonist;
+
     /* Attention mode */
     AttentionMode attentionMode;
 
@@ -28,6 +30,8 @@ class View {
         this.isFocused = false;
         this.isNoisy = false;
         this.scaleAttention = false;
+
+        isProtagonist = false;
 
         attentionMode = AttentionMode.ATT_NORMAL;
 
