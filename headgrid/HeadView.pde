@@ -8,6 +8,8 @@ class HeadView extends View {
     float baseRotX;
     float baseRotY;
 
+    Boolean trackingMouse = false;
+
     /* Reference to the head object */
     HeadModel model;
     
@@ -18,6 +20,9 @@ class HeadView extends View {
         
         this.rotX = 0;
         this.rotY = 0;
+
+        targetX = width/2;
+        targetY = height/2;
     }
     
     @Override
@@ -33,8 +38,10 @@ class HeadView extends View {
     @Override
     public void draw() {
 
-        targetX = mouseX;
-        targetY = mouseY;
+        if (trackingMouse) {
+            targetX = mouseX;
+            targetY = mouseY;
+        }
 
         pushMatrix();
         translate(this.x, this.y, this.z);

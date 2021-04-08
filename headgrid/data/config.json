@@ -6,28 +6,84 @@
     "init": {
         "participants": [
             {
+                "id": 1,
                 "name": "Stove Jebs",
                 "type": "head",
                 "mode": "ATT_RANDOM"
             },
             {
+                "id": 2,
                 "name": "Johnny Ove",
                 "type": "head",
                 "mode": "ATT_RANDOM"
             },
             {
+                "id": 3,
                 "name": "Tom Cole",
                 "type": "head",
                 "mode": "ATT_RANDOM"
             },
             {
+                "id": 4,
                 "name": "Bill Nye",
                 "type": "head",
                 "mode": "ATT_RANDOM"
             }
         ]
     },
-    "events": {
-        ""
-    }
+    "events": [
+        {
+            "frame": 60,
+            "target": [1, 2, 3, 4],
+            "action": "setMode",
+            "value": "ATT_STARE"
+        },
+        {
+            "frame": 60,
+            "target": [1, 2, 3, 4],
+            "action": "setWobble",
+            "value": true
+        },
+        {
+            "frame": 660,
+            "target": [1, 4],
+            "action": "setMode",
+            "value": "ATT_NORMAL"
+        },
+        {
+            "frame": 700,
+            "target": [4],
+            "action": "setViewTargetId",
+            "value": 1
+        },
+        {
+            "frame": 800,
+            "target": [1],
+            "action": "setViewTargetId",
+            "value": 4
+        },
+        {
+            "frame": 840,
+            "target": [2],
+            "action": "setMode",
+            "value": "ATT_NORMAL"
+        },
+        {
+            "frame": 840,
+            "target": [2],
+            "action": "setViewTargetId",
+            "value": 4
+        },
+        {
+            "frame": 1000,
+            "target": [1, 2, 3, 4],
+            "action": "setMode",
+            "value": "ATT_STARE"
+        },
+        {
+            "frame": 1120,
+            "action": "stop"
+        }
+    ]
 }
+
