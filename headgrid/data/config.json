@@ -7,6 +7,7 @@
     "highlightMouse": true,
     "displayNamePlates": true,
     "initSceneFromConfig": true,
+    "showMillis": true,
     "init": {
         "participants": [
             {
@@ -37,49 +38,49 @@
     },
     "events": [
         {
-            "frame": 60,
+            "millis": 1000,
             "target": [1, 2, 3, 4],
             "action": "setMode",
             "value": "ATT_STARE"
         },
         {
-            "frame": 660,
+            "millis": 6000,
             "target": [1, 4],
             "action": "setMode",
             "value": "ATT_NORMAL"
         },
         {
-            "frame": 700,
+            "millis": 6000,
             "target": [4],
             "action": "setViewTargetId",
             "value": 1
         },
         {
-            "frame": 800,
+            "millis": 6000,
             "target": [1],
             "action": "setViewTargetId",
             "value": 4
         },
         {
-            "frame": 840,
+            "millis": 10000,
             "target": [2],
             "action": "setMode",
             "value": "ATT_NORMAL"
         },
         {
-            "frame": 840,
+            "millis": 10000,
             "target": [2],
             "action": "setViewTargetId",
             "value": 4
         },
         {
-            "frame": 1000,
+            "millis": 15000,
             "target": [1, 2, 3, 4],
             "action": "setMode",
             "value": "ATT_STARE"
         },
         {
-            "frame": 1120,
+            "millis": 20000,
             "action": "stop"
         }
     ]
