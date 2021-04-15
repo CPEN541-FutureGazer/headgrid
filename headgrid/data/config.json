@@ -8,6 +8,9 @@
     "displayNamePlates": true,
     "initSceneFromConfig": true,
     "showMillis": true,
+    "soundFiles": [
+        "test.wav"
+    ],
     "init": {
         "participants": [
             {
@@ -60,6 +63,11 @@
             "target": [1],
             "action": "setViewTargetId",
             "value": 4
+        },
+        {
+            "millis": 6000,
+            "action": "playSound",
+            "value": "test.wav"
         },
         {
             "millis": 10000,

@@ -1,4 +1,6 @@
 //import processing.video.*;
+import processing.sound.*;
+import java.util.Map;
 
 JSONObject config;
 JSONArray events;
@@ -18,7 +20,16 @@ ArrayList<View> g_views;
 
 String g_participantName = "Sherlock Holmes";
 
+/* Whether to show milliseconds on the debug screen */
 boolean g_showMillis;
+
+/* Use this to offset the millis() function because millis() don't account for load times */
+int g_millisOffset = 0;
+
+/* Wrapper function for millis that applies the offset */
+int ms() {
+    return millis() - g_millisOffset;
+}
 
 PGraphics nameOverlayImage;
 
@@ -37,6 +48,9 @@ PImage zoomUI;
 
 Boolean g_finished = false;
 
+/* Sound files */
+HashMap<String, SoundFile> soundFilesMap = new HashMap<String, SoundFile>();
+
 void settings() {
     size(1280, 720, P3D);
 }
@@ -54,7 +68,7 @@ void setup() {
     // WIP: webcam capture
     //String[] cameras = Capture.list();
     //if (cameras.length == 0) {
-    //    println("No cameras");
+    //    println("No cameras"); //<>//
     //} else {
     //    for (int i = 0; i < cameras.length; i++) {
     //        println(cameras[i]);
@@ -79,7 +93,18 @@ void setup() {
     JSONArray configParticipants = config.getJSONObject("init").getJSONArray("participants");
     populateSceneWithConfig(configParticipants);
 
+    /* Load sound files */
+    JSONArray sounds = config.getJSONArray("soundFiles");
+    for (int i = 0; i < sounds.size(); i++) {
+        String soundFileName = sounds.getString(i);
+        SoundFile newSound = new SoundFile(this, "sounds/" + soundFileName);
+        soundFilesMap.put(soundFileName, newSound);
+    }
+
     events = config.getJSONArray("events");
+
+    /* Finished setting up; reset millis offset */
+    g_millisOffset = millis();
 }
 
 void draw() {
@@ -89,7 +114,7 @@ void draw() {
 
     if (g_showMillis) {
         textAlign(LEFT, TOP);
-        text(int(frameRate) + " fps : " + str(millis()) + " ms", 20, 20);
+        text(int(frameRate) + " fps : " + str(ms()) + " ms", 20, 20);
     }
     
     directionalLight(255, 255, 255, 0, 1, - 1);
@@ -128,7 +153,7 @@ void draw() {
     }
 
     /* Execute potential events happening on this frame */
-    while(executeNextEvent(millis()));
+    while(executeNextEvent(ms()));
 }
 
 void populateSceneWithConfig(JSONArray arr) {
@@ -142,7 +167,7 @@ void populateSceneWithConfig(JSONArray arr) {
         String modeStr = p.getString("mode");
         AttentionMode newMode;
         if (modeStr.equals("ATT_NORMAL")) {
-            newMode = AttentionMode.ATT_NORMAL;
+            newMode = AttentionMode.ATT_NORMAL; //<>//
         } else if (modeStr.equals("ATT_STARE")) {
             newMode = AttentionMode.ATT_STARE;
         } else if (modeStr.equals("ATT_RANDOM")) {
@@ -151,9 +176,9 @@ void populateSceneWithConfig(JSONArray arr) {
             println("Invalid mode for id=" + str(newId));
             continue;
         }
-
+ //<>//
         // create the object and add it to view/scene
-        View newView;
+        View newView; //<>//
         if (is3D) {
             newView = new HeadView(newId, head, 0, 0);
         } else {
@@ -211,7 +236,7 @@ Boolean executeNextEvent(int time_ms) {
         }
     } else if (action.equals("setWobble")) {
         Boolean wobble = nextEvent.getBoolean("value");
-
+ //<>//
         JSONArray targets = nextEvent.getJSONArray("target");
         for (int i = 0; i < targets.size(); i++) {
             int id = targets.getInt(i);
@@ -222,7 +247,7 @@ Boolean executeNextEvent(int time_ms) {
                     v.isNoisy = wobble;
                     break;
                 }
-            }
+            } //<>//
         }
     } else if (action.equals("setViewTargetId")) {
         int viewTargetId = nextEvent.getInt("value");
@@ -250,6 +275,10 @@ Boolean executeNextEvent(int time_ms) {
                 }
             }
         }
+    } else if (action.equals("playSound")) {
+        String sound = nextEvent.getString("value");
+        soundFilesMap.get(sound).play();
+
     } else if (action.equals("stop")) {
         println("Stopped!");
         g_finished = true;
