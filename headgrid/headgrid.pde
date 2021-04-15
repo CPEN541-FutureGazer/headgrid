@@ -1,4 +1,4 @@
-import processing.video.*;
+//import processing.video.*;
 
 JSONObject config;
 JSONArray events;
@@ -18,6 +18,8 @@ ArrayList<View> g_views;
 
 String g_participantName = "Sherlock Holmes";
 
+boolean g_showMillis;
+
 PGraphics nameOverlayImage;
 
 // self viwe mode:
@@ -31,7 +33,7 @@ UI g_uiControl;
 
 PImage zoomUI;
 
-Capture webcam;
+//Capture webcam;
 
 Boolean g_finished = false;
 
@@ -68,9 +70,11 @@ void setup() {
     }
 
     g_highlightMouse = config.getBoolean("highlightMouse");
-    g_displayNamePlates = config.getBoolean("displayNamePlates"); //<>//
+    g_displayNamePlates = config.getBoolean("displayNamePlates");
 
     g_enableKeyboard = config.getBoolean("enableKeyboard");
+
+    g_showMillis = config.getBoolean("showMillis");
 
     JSONArray configParticipants = config.getJSONObject("init").getJSONArray("participants");
     populateSceneWithConfig(configParticipants);
@@ -82,7 +86,11 @@ void draw() {
     background(33);
     fill(255);
     noStroke();
-    text(int(frameRate) + " : " + str(frameCount), 20, 20);
+
+    if (g_showMillis) {
+        textAlign(LEFT, TOP);
+        text(int(frameRate) + " fps : " + str(millis()) + " ms", 20, 20);
+    }
     
     directionalLight(255, 255, 255, 0, 1, - 1);
     ambient(50, 50, 50);
@@ -120,7 +128,7 @@ void draw() {
     }
 
     /* Execute potential events happening on this frame */
-    while(executeNextEvent(frameCount));
+    while(executeNextEvent(millis()));
 }
 
 void populateSceneWithConfig(JSONArray arr) {
@@ -162,17 +170,16 @@ void populateSceneWithConfig(JSONArray arr) {
 }
 
 // executes the pre-programmed event imported from the config file
-Boolean executeNextEvent(int f) {
+Boolean executeNextEvent(int time_ms) {
     if (events.size() == 0 || eventIndex == events.size()) {
         return false;
     }
 
     JSONObject nextEvent = events.getJSONObject(eventIndex); //<>//
-    int nextFrame = nextEvent.getInt("frame");
-    if (nextFrame < f) {
-        println("ERROR!");
-        return false;
-    } else if (nextFrame > f) {
+    int nextFrame = nextEvent.getInt("millis");
+
+    /* Return if the time millis hasn't been reached */
+    if (nextFrame > time_ms) {
         return false;
     }
 
@@ -252,5 +259,7 @@ Boolean executeNextEvent(int f) {
     }
 
     eventIndex++;
+
+    /* Return true as there could be more incoming events */
     return true;
 }
