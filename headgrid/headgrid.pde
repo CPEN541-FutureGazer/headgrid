@@ -4,11 +4,19 @@ import java.util.Map;
 
 /* Config file path */
 final String TEST_CONFIG = "config.json";
+
 final String EXP_A_CONFIG = "experimentConfigs/expA.json";
 final String EXP_B_CONFIG = "experimentConfigs/expB.json";
+final String EXP_C_CONFIG = "experimentConfigs/expC.json";
+final String EXP_D_CONFIG = "experimentConfigs/expD.json";
+
+final String EXP_EA_CONFIG = "experimentConfigs/expE_A.json";
+final String EXP_EB_CONFIG = "experimentConfigs/expE_B.json";
+final String EXP_EC_CONFIG = "experimentConfigs/expE_C.json";
+final String EXP_ED_CONFIG = "experimentConfigs/expE_D.json";
 
 /* Whatever config we're testing right now */
-String ACTIVE_CONFIG = EXP_B_CONFIG;
+String ACTIVE_CONFIG = EXP_EB_CONFIG;
 
 JSONObject config;
 JSONArray events;

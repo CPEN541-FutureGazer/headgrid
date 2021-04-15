@@ -1,0 +1,66 @@
+{
+    "windowTitle": "FutureGazer Prototype Experiment A",
+    "uiModeControl": true,
+    "enableKeyboard": true,
+    "displayParticipant": false,
+    "partcipantName": "Sherlock Holmes",
+    "highlightMouse": true,
+    "displayNamePlates": false,
+    "initSceneFromConfig": true,
+    "showMillis": true,
+    "soundFiles": [],
+    "init": {
+        "participants": [
+            {
+                "id": 1,
+                "name": "",
+                "head3d": false,
+                "mode": "ATT_STARE"
+            },
+            {
+                "id": 2,
+                "name": "",
+                "head3d": false,
+                "mode": "ATT_STARE"
+            },
+            {
+                "id": 3,
+                "name": "",
+                "head3d": false,
+                "mode": "ATT_STARE"
+            },
+            {
+                "id": 4,
+                "name": "",
+                "head3d": false,
+                "mode": "ATT_STARE"
+            },
+            {
+                "id": 5,
+                "name": "",
+                "head3d": false,
+                "mode": "ATT_STARE"
+            },
+
+        ]
+    },
+    "events": [
+        {
+            "millis": 0,
+            "target": [1, 2, 3, 4, 5],
+            "action": "setWobble",
+            "value": true
+        },
+
+        /* TODO: "randomly" turn a few ids to not paying attention */
+        /* Maybe use a python script to auto generate */
+        {
+            "millis": 10000,
+        }
+        {
+            "millis": 600000,
+            "action": "stop"
+        }
+    ]
+}
+

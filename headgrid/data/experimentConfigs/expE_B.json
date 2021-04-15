@@ -1,0 +1,125 @@
+{
+    "windowTitle": "FutureGazer Prototype Experiment A",
+    "uiModeControl": true,
+    "enableKeyboard": true,
+    "displayParticipant": false,
+    "partcipantName": "Sherlock Holmes",
+    "highlightMouse": true,
+    "displayNamePlates": false,
+    "initSceneFromConfig": true,
+    "showMillis": true,
+    "soundFiles": [],
+    "init": {
+        "participants": [
+            {
+                "id": 1,
+                "name": "",
+                "head3d": false,
+                "mode": "ATT_STARE"
+            },
+            {
+                "id": 2,
+                "name": "",
+                "head3d": false,
+                "mode": "ATT_STARE"
+            },
+            {
+                "id": 3,
+                "name": "",
+                "head3d": false,
+                "mode": "ATT_STARE"
+            },
+            {
+                "id": 4,
+                "name": "",
+                "head3d": false,
+                "mode": "ATT_STARE"
+            },
+            {
+                "id": 5,
+                "name": "",
+                "head3d": false,
+                "mode": "ATT_STARE"
+            },
+            {
+                "id": 6,
+                "name": "",
+                "head3d": false,
+                "mode": "ATT_STARE"
+            },
+            {
+                "id": 7,
+                "name": "",
+                "head3d": false,
+                "mode": "ATT_STARE"
+            },
+            {
+                "id": 8,
+                "name": "",
+                "head3d": false,
+                "mode": "ATT_STARE"
+            },
+            {
+                "id": 9,
+                "name": "",
+                "head3d": false,
+                "mode": "ATT_STARE"
+            }
+        ]
+    },
+    "events": [
+        {
+            "millis": 0,
+            "target": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+            "action": "setWobble",
+            "value": false
+        },
+        {
+            "millis": 0,
+            "target": [1, 2, 3, 4, 5, 6, 8, 9],
+            "action": "setMode",
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 0,
+            "target": [1, 2, 3, 4, 5, 6, 8, 9],
+            "action": "setViewTargetId",
+            "value": "7"
+        },
+        {
+            "millis": 0,
+            "target": [7],
+            "action": "setFocused",
+            "value": true
+        },
+        {
+            "millis": 0,
+            "target": [7],
+            "action": "setWobble",
+            "value": true
+        },
+        {
+            "millis": 10500,
+            "target": [3],
+            "action": "setMode",
+            "value": "ATT_STARE"
+        },
+        {
+            "millis": 14000,
+            "target": [4],
+            "action": "setMode",
+            "value": "ATT_STARE"
+        },
+        {
+            "millis": 18000,
+            "target": [8],
+            "action": "setMode",
+            "value": "ATT_STARE"
+        },
+        {
+            "millis": 24000,
+            "action": "stop"
+        }
+    ]
+}
+
