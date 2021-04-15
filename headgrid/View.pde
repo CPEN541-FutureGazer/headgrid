@@ -44,8 +44,8 @@ class View {
 
         trackingMouse = false;
 
-        this.lerpRX = random(0.15, 0.3);
-        this.lerpRY = random(0.05, 0.15);
+        this.lerpRX = random(0.07, 0.2);
+        this.lerpRY = random(0.02, 0.08);
 
         this.name = "no_name";
 

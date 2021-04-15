@@ -48,6 +48,11 @@ class HeadView extends View {
             targetScale *= map(abs(diffRZ * diffRX), 0, 1, 1.2, 0.4);
         }
         scale(targetScale);
+
+        /* If the focus flag is turned on, draw a gold halo indication */
+        if (this.isFocused) {
+            drawFocused();
+        }
         
         float diffX = targetX - this.x;
         float diffY = targetY - this.y;
@@ -98,12 +103,8 @@ class HeadView extends View {
         specular(150, 150, 150);
 
         model.draw();
-        popMatrix();
 
-        if (this.isFocused) {
-            drawFocused();
-        }
-        
+        popMatrix();
         popMatrix();
         
         /* Debug */

@@ -2,6 +2,14 @@
 import processing.sound.*;
 import java.util.Map;
 
+/* Config file path */
+final String TEST_CONFIG = "config.json";
+final String EXP_A_CONFIG = "experimentConfigs/expA.json";
+final String EXP_B_CONFIG = "experimentConfigs/expB.json";
+
+/* Whatever config we're testing right now */
+String ACTIVE_CONFIG = EXP_B_CONFIG;
+
 JSONObject config;
 JSONArray events;
 int eventIndex = 0;
@@ -56,7 +64,7 @@ void settings() {
 }
 
 void setup() {
-    config = loadJSONObject("config.json");
+    config = loadJSONObject(ACTIVE_CONFIG);
 
     surface.setTitle(config.getString("windowTitle"));
 
@@ -117,8 +125,8 @@ void draw() {
         text(int(frameRate) + " fps : " + str(ms()) + " ms", 20, 20);
     }
     
+    lights();
     directionalLight(255, 255, 255, 0, 1, - 1);
-    ambient(50, 50, 50);
 
     if (g_highlightMouse) {
         lightFalloff(1.0, 0.005, 0.0001);
@@ -167,7 +175,7 @@ void populateSceneWithConfig(JSONArray arr) {
         String modeStr = p.getString("mode");
         AttentionMode newMode;
         if (modeStr.equals("ATT_NORMAL")) {
-            newMode = AttentionMode.ATT_NORMAL; //<>//
+            newMode = AttentionMode.ATT_NORMAL;
         } else if (modeStr.equals("ATT_STARE")) {
             newMode = AttentionMode.ATT_STARE;
         } else if (modeStr.equals("ATT_RANDOM")) {
@@ -176,9 +184,9 @@ void populateSceneWithConfig(JSONArray arr) {
             println("Invalid mode for id=" + str(newId));
             continue;
         }
- //<>//
+
         // create the object and add it to view/scene
-        View newView; //<>//
+        View newView;
         if (is3D) {
             newView = new HeadView(newId, head, 0, 0);
         } else {
@@ -200,7 +208,7 @@ Boolean executeNextEvent(int time_ms) {
         return false;
     }
 
-    JSONObject nextEvent = events.getJSONObject(eventIndex); //<>//
+    JSONObject nextEvent = events.getJSONObject(eventIndex);
     int nextFrame = nextEvent.getInt("millis");
 
     /* Return if the time millis hasn't been reached */
@@ -208,9 +216,9 @@ Boolean executeNextEvent(int time_ms) {
         return false;
     }
 
-    String action = nextEvent.getString("action"); //<>//
+    String action = nextEvent.getString("action");
 
-    if (action.equals("setMode")) { //<>//
+    if (action.equals("setMode")) {
         String modeStr = nextEvent.getString("value");
 
         AttentionMode newMode = AttentionMode.ATT_NORMAL;
@@ -236,7 +244,7 @@ Boolean executeNextEvent(int time_ms) {
         }
     } else if (action.equals("setWobble")) {
         Boolean wobble = nextEvent.getBoolean("value");
- //<>//
+
         JSONArray targets = nextEvent.getJSONArray("target");
         for (int i = 0; i < targets.size(); i++) {
             int id = targets.getInt(i);
@@ -247,7 +255,7 @@ Boolean executeNextEvent(int time_ms) {
                     v.isNoisy = wobble;
                     break;
                 }
-            } //<>//
+            }
         }
     } else if (action.equals("setViewTargetId")) {
         int viewTargetId = nextEvent.getInt("value");
@@ -268,13 +276,29 @@ Boolean executeNextEvent(int time_ms) {
 
             // FIXME: not the most effiicent way but whatever
             for (View v: g_views) {
-                if (v.id == id) { //<>//
+                if (v.id == id) {
                     v.targetX = targetX;
                     v.targetY = targetY;
                     break;
                 }
             }
         }
+    } else if (action.equals("setFocused")) {
+        Boolean focus = nextEvent.getBoolean("value");
+
+        JSONArray targets = nextEvent.getJSONArray("target");
+        for (int i = 0; i < targets.size(); i++) {
+            int id = targets.getInt(i);
+
+            // FIXME: not the most effiicent way but whatever
+            for (View v: g_views) {
+                if (v.id == id) {
+                    v.isFocused = focus;
+                    break;
+                }
+            }
+        }
+
     } else if (action.equals("playSound")) {
         String sound = nextEvent.getString("value");
         soundFilesMap.get(sound).play();
@@ -283,7 +307,7 @@ Boolean executeNextEvent(int time_ms) {
         println("Stopped!");
         g_finished = true;
     } else {
-        println("Error, unidentified action: " + action); //<>//
+        println("Error, unidentified action: " + action);
         return false;
     }
 
