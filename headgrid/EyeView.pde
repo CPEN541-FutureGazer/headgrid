@@ -18,6 +18,9 @@ class EyeView extends View {
 
     int blinkTimer;
 
+    float currentX = 0;
+    float currentY = 0;
+
     public EyeView(int id, float x, float y) {
         super(id, x, y);
 
@@ -55,7 +58,7 @@ class EyeView extends View {
         }
 
         /* Find distance and vector to target position */
-        PVector diff = new PVector(this.targetX - this.x, this.targetY - this.y);
+        PVector diff = new PVector(this.currentX - this.x, this.currentY - this.y);
         diff.mult(0.3);
 
         eyeTexture.beginDraw();
@@ -103,12 +106,20 @@ class EyeView extends View {
         }
 
         if (this.isNoisy) {
-            targetX += (2 * noise(this.x + frameCount * this.noiseFreq) - 1) * 100;
-            targetY += (2 * noise(this.y + frameCount * this.noiseFreq) - 1) * 50;
+            targetX += (2 * noise(this.x + frameCount * this.noiseFreq) - 1) * 0.2;
+            targetY += (2 * noise(this.y + frameCount * this.noiseFreq - 1000) - 1) * 0.2;
         }
+
+        this.currentX = lerp(this.currentX, this.targetX, 0.17);
+        this.currentY = lerp(this.currentY, this.targetY, 0.17);
 
         pushMatrix();
         translate(this.x, this.y);
+
+        if (this.isFocused) {
+            drawFocusedLarge();
+        }
+
         pushMatrix();
 
         float targetScale = this.scale;
@@ -123,10 +134,6 @@ class EyeView extends View {
         image(this.eyeTexture, -8 + this.eyeLeftX, -8 + this.eyeY, 16, 16);
         image(this.eyeTexture, -8 + this.eyeRightX, -8 + this.eyeY, 16, 16);
         popMatrix();
-
-        if (this.isFocused) {
-            drawFocused();
-        }
 
         popMatrix();
 

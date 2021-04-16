@@ -16,7 +16,7 @@ final String EXP_EC_CONFIG = "experimentConfigs/gen_expE_C.json";
 final String EXP_ED_CONFIG = "experimentConfigs/gen_expE_D.json";
 
 /* Whatever config we're testing right now */
-String ACTIVE_CONFIG = EXP_D_CONFIG;
+String ACTIVE_CONFIG = EXP_EA_CONFIG;
 
 JSONObject config;
 JSONArray events;
@@ -85,7 +85,7 @@ void setup() {
     // WIP: webcam capture
     //String[] cameras = Capture.list();
     //if (cameras.length == 0) {
-    //    println("No cameras"); //<>// //<>//
+    //    println("No cameras"); //<>// //<>// //<>//
     //} else {
     //    for (int i = 0; i < cameras.length; i++) {
     //        println(cameras[i]);
