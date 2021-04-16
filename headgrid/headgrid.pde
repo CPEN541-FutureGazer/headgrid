@@ -41,7 +41,7 @@ boolean g_showMillis;
 
 /* Use this to offset the millis() function because millis() don't account for load times */
 int g_millisOffset = 0;
-int g_additionalMillisOffset = -3000;
+int g_additionalMillisOffset = 3000;
 
 /* Wrapper function for millis that applies the offset */
 int ms() {

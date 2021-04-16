@@ -206,14 +206,17 @@ def generateExpD(filename, head3d=True):
     out = getConfigTemplate()
     out['windowTitle'] = 'FutureGazer Experiment D'
     out['soundFiles'].append('E4_norm.wav')
+    out['displayNamePlates'] = True
 
     N = 4
 
     # Generate participants
+    names = ['A', 'B', 'C', 'D']
     for i in range(N):
         out['init']['participants'].append(getParticipantObj(
             id=i,
-            head3d=head3d
+            head3d=head3d,
+            name=names[i]
         ))
 
     def getListener(presenter_id):

@@ -6,5 +6,5 @@ void drawFocused() {
 
     fill(250, 140, 50, 50);
     noStroke();
-    ellipse(0, 0, 35, 35);
+    ellipse(0, 0, 23, 23);
 }
