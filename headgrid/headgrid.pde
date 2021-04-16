@@ -6,17 +6,17 @@ import java.util.Map;
 final String TEST_CONFIG = "config.json";
 
 final String EXP_A_CONFIG = "experimentConfigs/gen_expA.json";
-final String EXP_B_CONFIG = "experimentConfigs/expB.json";
-final String EXP_C_CONFIG = "experimentConfigs/expC.json";
-final String EXP_D_CONFIG = "experimentConfigs/expD.json";
+final String EXP_B_CONFIG = "experimentConfigs/gen_expB.json";
+final String EXP_C_CONFIG = "experimentConfigs/gen_expC.json";
+final String EXP_D_CONFIG = "experimentConfigs/gen_expD.json";
 
-final String EXP_EA_CONFIG = "experimentConfigs/expE_A.json";
-final String EXP_EB_CONFIG = "experimentConfigs/expE_B.json";
-final String EXP_EC_CONFIG = "experimentConfigs/expE_C.json";
-final String EXP_ED_CONFIG = "experimentConfigs/expE_D.json";
+final String EXP_EA_CONFIG = "experimentConfigs/gen_expE_A.json";
+final String EXP_EB_CONFIG = "experimentConfigs/gen_expE_B.json";
+final String EXP_EC_CONFIG = "experimentConfigs/gen_expE_C.json";
+final String EXP_ED_CONFIG = "experimentConfigs/gen_expE_D.json";
 
 /* Whatever config we're testing right now */
-String ACTIVE_CONFIG = EXP_A_CONFIG;
+String ACTIVE_CONFIG = EXP_D_CONFIG;
 
 JSONObject config;
 JSONArray events;
@@ -41,7 +41,7 @@ boolean g_showMillis;
 
 /* Use this to offset the millis() function because millis() don't account for load times */
 int g_millisOffset = 0;
-int g_additionalMillisOffset = 3000;
+int g_additionalMillisOffset = -3000;
 
 /* Wrapper function for millis that applies the offset */
 int ms() {

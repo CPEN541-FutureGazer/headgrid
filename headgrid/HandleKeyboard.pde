@@ -1,5 +1,7 @@
 void keyPressed() {
 
+    if (!g_enableKeyboard) return;
+
     /* Selection keys */
     if (key == 'a') { selectAll(true); }
     if (key == 'q') { selectAll(false); }

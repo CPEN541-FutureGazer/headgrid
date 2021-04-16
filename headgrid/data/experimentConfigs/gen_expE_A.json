@@ -1,0 +1,500 @@
+{
+    "windowTitle": "FutureGazer Experiment A",
+    "uiModeControl": true,
+    "enableKeyboard": true,
+    "displayParticipant": false,
+    "partcipantName": "Sherlock Holmes",
+    "highlightMouse": false,
+    "displayNamePlates": false,
+    "initSceneFromConfig": true,
+    "showMillis": true,
+    "soundFiles": [
+        "E1_P1_norm.wav"
+    ],
+    "init": {
+        "participants": [
+            {
+                "id": 0,
+                "name": "noname",
+                "head3d": false,
+                "trackingMouse": false,
+                "mode": "ATT_RANDOM"
+            },
+            {
+                "id": 1,
+                "name": "noname",
+                "head3d": false,
+                "trackingMouse": false,
+                "mode": "ATT_RANDOM"
+            },
+            {
+                "id": 2,
+                "name": "noname",
+                "head3d": false,
+                "trackingMouse": false,
+                "mode": "ATT_RANDOM"
+            },
+            {
+                "id": 3,
+                "name": "noname",
+                "head3d": false,
+                "trackingMouse": false,
+                "mode": "ATT_RANDOM"
+            },
+            {
+                "id": 4,
+                "name": "noname",
+                "head3d": false,
+                "trackingMouse": false,
+                "mode": "ATT_RANDOM"
+            },
+            {
+                "id": 5,
+                "name": "noname",
+                "head3d": false,
+                "trackingMouse": false,
+                "mode": "ATT_RANDOM"
+            },
+            {
+                "id": 6,
+                "name": "noname",
+                "head3d": false,
+                "trackingMouse": false,
+                "mode": "ATT_RANDOM"
+            },
+            {
+                "id": 7,
+                "name": "noname",
+                "head3d": false,
+                "trackingMouse": false,
+                "mode": "ATT_RANDOM"
+            },
+            {
+                "id": 8,
+                "name": "noname",
+                "head3d": false,
+                "trackingMouse": false,
+                "mode": "ATT_RANDOM"
+            }
+        ]
+    },
+    "events": [
+        {
+            "millis": 0,
+            "action": "playSound",
+            "value": "E1_P1_norm.wav"
+        },
+        {
+            "millis": 0,
+            "action": "setWobble",
+            "target": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "value": true
+        },
+        {
+            "millis": 2111,
+            "action": "setFocused",
+            "target": [
+                4
+            ],
+            "value": true
+        },
+        {
+            "millis": 2111,
+            "action": "setMode",
+            "target": [
+                4
+            ],
+            "value": "ATT_STARE"
+        },
+        {
+            "millis": 2517,
+            "action": "setMode",
+            "target": [
+                8
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 2517,
+            "action": "setViewTargetId",
+            "target": [
+                8
+            ],
+            "value": 4
+        },
+        {
+            "millis": 2581,
+            "action": "setMode",
+            "target": [
+                3
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 2581,
+            "action": "setViewTargetId",
+            "target": [
+                3
+            ],
+            "value": 4
+        },
+        {
+            "millis": 2653,
+            "action": "setMode",
+            "target": [
+                2
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 2653,
+            "action": "setViewTargetId",
+            "target": [
+                2
+            ],
+            "value": 4
+        },
+        {
+            "millis": 2677,
+            "action": "setMode",
+            "target": [
+                0
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 2677,
+            "action": "setViewTargetId",
+            "target": [
+                0
+            ],
+            "value": 4
+        },
+        {
+            "millis": 2814,
+            "action": "setMode",
+            "target": [
+                6
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 2814,
+            "action": "setViewTargetId",
+            "target": [
+                6
+            ],
+            "value": 4
+        },
+        {
+            "millis": 2947,
+            "action": "setMode",
+            "target": [
+                7
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 2947,
+            "action": "setViewTargetId",
+            "target": [
+                7
+            ],
+            "value": 4
+        },
+        {
+            "millis": 3068,
+            "action": "setMode",
+            "target": [
+                1
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 3068,
+            "action": "setViewTargetId",
+            "target": [
+                1
+            ],
+            "value": 4
+        },
+        {
+            "millis": 3105,
+            "action": "setMode",
+            "target": [
+                5
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 3105,
+            "action": "setViewTargetId",
+            "target": [
+                5
+            ],
+            "value": 4
+        },
+        {
+            "millis": 15833,
+            "action": "setFocused",
+            "target": [
+                4
+            ],
+            "value": false
+        },
+        {
+            "millis": 16000,
+            "action": "setMode",
+            "target": [
+                4
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 16000,
+            "action": "setViewTargetId",
+            "target": [
+                4
+            ],
+            "value": 0
+        },
+        {
+            "millis": 18800,
+            "action": "setViewTargetId",
+            "target": [
+                4
+            ],
+            "value": 0
+        },
+        {
+            "millis": 19400,
+            "action": "setMode",
+            "target": [
+                4
+            ],
+            "value": "ATT_STARE"
+        },
+        {
+            "millis": 19406,
+            "action": "setFocused",
+            "target": [
+                4
+            ],
+            "value": true
+        },
+        {
+            "millis": 26267,
+            "action": "setFocused",
+            "target": [
+                4
+            ],
+            "value": false
+        },
+        {
+            "millis": 27500,
+            "action": "setMode",
+            "target": [
+                4
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 27500,
+            "action": "setViewTargetId",
+            "target": [
+                4
+            ],
+            "value": 5
+        },
+        {
+            "millis": 29464,
+            "action": "setMode",
+            "target": [
+                6
+            ],
+            "value": "ATT_STARE"
+        },
+        {
+            "millis": 30570,
+            "action": "setFocused",
+            "target": [
+                4
+            ],
+            "value": true
+        },
+        {
+            "millis": 31000,
+            "action": "setMode",
+            "target": [
+                4
+            ],
+            "value": "ATT_STARE"
+        },
+        {
+            "millis": 33158,
+            "action": "setMode",
+            "target": [
+                6
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 40622,
+            "action": "setMode",
+            "target": [
+                5
+            ],
+            "value": "ATT_STARE"
+        },
+        {
+            "millis": 43728,
+            "action": "setMode",
+            "target": [
+                8
+            ],
+            "value": "ATT_STARE"
+        },
+        {
+            "millis": 44554,
+            "action": "setMode",
+            "target": [
+                5
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 48996,
+            "action": "setMode",
+            "target": [
+                1
+            ],
+            "value": "ATT_STARE"
+        },
+        {
+            "millis": 50782,
+            "action": "setMode",
+            "target": [
+                2
+            ],
+            "value": "ATT_STARE"
+        },
+        {
+            "millis": 51118,
+            "action": "setMode",
+            "target": [
+                8
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 52427,
+            "action": "setMode",
+            "target": [
+                5
+            ],
+            "value": "ATT_STARE"
+        },
+        {
+            "millis": 52882,
+            "action": "setMode",
+            "target": [
+                8
+            ],
+            "value": "ATT_STARE"
+        },
+        {
+            "millis": 54249,
+            "action": "setMode",
+            "target": [
+                8
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 55729,
+            "action": "setMode",
+            "target": [
+                1
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 56504,
+            "action": "setMode",
+            "target": [
+                2
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 60177,
+            "action": "setMode",
+            "target": [
+                5
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 63606,
+            "action": "setMode",
+            "target": [
+                8
+            ],
+            "value": "ATT_STARE"
+        },
+        {
+            "millis": 66706,
+            "action": "setMode",
+            "target": [
+                8
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 68755,
+            "action": "setMode",
+            "target": [
+                2
+            ],
+            "value": "ATT_STARE"
+        },
+        {
+            "millis": 75555,
+            "action": "setMode",
+            "target": [
+                2
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 80259,
+            "action": "setMode",
+            "target": [
+                2
+            ],
+            "value": "ATT_STARE"
+        },
+        {
+            "millis": 83329,
+            "action": "setMode",
+            "target": [
+                2
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 130000,
+            "action": "stop"
+        }
+    ]
+}

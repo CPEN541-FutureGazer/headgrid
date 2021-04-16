@@ -1,0 +1,556 @@
+{
+    "windowTitle": "FutureGazer Experiment D",
+    "uiModeControl": true,
+    "enableKeyboard": true,
+    "displayParticipant": false,
+    "partcipantName": "Sherlock Holmes",
+    "highlightMouse": false,
+    "displayNamePlates": false,
+    "initSceneFromConfig": true,
+    "showMillis": true,
+    "soundFiles": [
+        "E4_norm.wav"
+    ],
+    "init": {
+        "participants": [
+            {
+                "id": 0,
+                "name": "noname",
+                "head3d": false,
+                "trackingMouse": false,
+                "mode": "ATT_RANDOM"
+            },
+            {
+                "id": 1,
+                "name": "noname",
+                "head3d": false,
+                "trackingMouse": false,
+                "mode": "ATT_RANDOM"
+            },
+            {
+                "id": 2,
+                "name": "noname",
+                "head3d": false,
+                "trackingMouse": false,
+                "mode": "ATT_RANDOM"
+            },
+            {
+                "id": 3,
+                "name": "noname",
+                "head3d": false,
+                "trackingMouse": false,
+                "mode": "ATT_RANDOM"
+            }
+        ]
+    },
+    "events": [
+        {
+            "millis": 0,
+            "action": "playSound",
+            "value": "E4_norm.wav"
+        },
+        {
+            "millis": 0,
+            "action": "setWobble",
+            "target": [
+                0,
+                1,
+                2,
+                3
+            ],
+            "value": true
+        },
+        {
+            "millis": 11284,
+            "action": "setFocused",
+            "target": [
+                0
+            ],
+            "value": true
+        },
+        {
+            "millis": 11300,
+            "action": "setMode",
+            "target": [
+                0
+            ],
+            "value": "ATT_STARE"
+        },
+        {
+            "millis": 12310,
+            "action": "setMode",
+            "target": [
+                1
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 12310,
+            "action": "setViewTargetId",
+            "target": [
+                1
+            ],
+            "value": 0
+        },
+        {
+            "millis": 12835,
+            "action": "setMode",
+            "target": [
+                3
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 12835,
+            "action": "setViewTargetId",
+            "target": [
+                3
+            ],
+            "value": 0
+        },
+        {
+            "millis": 13158,
+            "action": "setMode",
+            "target": [
+                2
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 13158,
+            "action": "setViewTargetId",
+            "target": [
+                2
+            ],
+            "value": 0
+        },
+        {
+            "millis": 22674,
+            "action": "setFocused",
+            "target": [
+                0
+            ],
+            "value": false
+        },
+        {
+            "millis": 23085,
+            "action": "setFocused",
+            "target": [
+                0
+            ],
+            "value": true
+        },
+        {
+            "millis": 26009,
+            "action": "setFocused",
+            "target": [
+                0
+            ],
+            "value": false
+        },
+        {
+            "millis": 27394,
+            "action": "setFocused",
+            "target": [
+                1
+            ],
+            "value": true
+        },
+        {
+            "millis": 27600,
+            "action": "setMode",
+            "target": [
+                1
+            ],
+            "value": "ATT_STARE"
+        },
+        {
+            "millis": 28153,
+            "action": "setMode",
+            "target": [
+                3
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 28153,
+            "action": "setViewTargetId",
+            "target": [
+                3
+            ],
+            "value": 1
+        },
+        {
+            "millis": 28389,
+            "action": "setMode",
+            "target": [
+                2
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 28389,
+            "action": "setViewTargetId",
+            "target": [
+                2
+            ],
+            "value": 1
+        },
+        {
+            "millis": 29476,
+            "action": "setMode",
+            "target": [
+                0
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 29476,
+            "action": "setViewTargetId",
+            "target": [
+                0
+            ],
+            "value": 1
+        },
+        {
+            "millis": 48067,
+            "action": "setFocused",
+            "target": [
+                1
+            ],
+            "value": false
+        },
+        {
+            "millis": 49298,
+            "action": "setFocused",
+            "target": [
+                2
+            ],
+            "value": true
+        },
+        {
+            "millis": 49300,
+            "action": "setMode",
+            "target": [
+                2
+            ],
+            "value": "ATT_STARE"
+        },
+        {
+            "millis": 49569,
+            "action": "setMode",
+            "target": [
+                1
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 49569,
+            "action": "setViewTargetId",
+            "target": [
+                1
+            ],
+            "value": 2
+        },
+        {
+            "millis": 50609,
+            "action": "setMode",
+            "target": [
+                3
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 50609,
+            "action": "setViewTargetId",
+            "target": [
+                3
+            ],
+            "value": 2
+        },
+        {
+            "millis": 50912,
+            "action": "setMode",
+            "target": [
+                0
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 50912,
+            "action": "setViewTargetId",
+            "target": [
+                0
+            ],
+            "value": 2
+        },
+        {
+            "millis": 72947,
+            "action": "setFocused",
+            "target": [
+                2
+            ],
+            "value": false
+        },
+        {
+            "millis": 74486,
+            "action": "setFocused",
+            "target": [
+                1
+            ],
+            "value": true
+        },
+        {
+            "millis": 74752,
+            "action": "setMode",
+            "target": [
+                3
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 74752,
+            "action": "setViewTargetId",
+            "target": [
+                3
+            ],
+            "value": 1
+        },
+        {
+            "millis": 74828,
+            "action": "setMode",
+            "target": [
+                0
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 74828,
+            "action": "setViewTargetId",
+            "target": [
+                0
+            ],
+            "value": 1
+        },
+        {
+            "millis": 74866,
+            "action": "setMode",
+            "target": [
+                2
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 74866,
+            "action": "setViewTargetId",
+            "target": [
+                2
+            ],
+            "value": 1
+        },
+        {
+            "millis": 80283,
+            "action": "setFocused",
+            "target": [
+                1
+            ],
+            "value": false
+        },
+        {
+            "millis": 80847,
+            "action": "setFocused",
+            "target": [
+                2
+            ],
+            "value": true
+        },
+        {
+            "millis": 81044,
+            "action": "setMode",
+            "target": [
+                1
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 81044,
+            "action": "setViewTargetId",
+            "target": [
+                1
+            ],
+            "value": 2
+        },
+        {
+            "millis": 81119,
+            "action": "setMode",
+            "target": [
+                0
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 81119,
+            "action": "setViewTargetId",
+            "target": [
+                0
+            ],
+            "value": 2
+        },
+        {
+            "millis": 81393,
+            "action": "setMode",
+            "target": [
+                3
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 81393,
+            "action": "setViewTargetId",
+            "target": [
+                3
+            ],
+            "value": 2
+        },
+        {
+            "millis": 97520,
+            "action": "setFocused",
+            "target": [
+                2
+            ],
+            "value": false
+        },
+        {
+            "millis": 98084,
+            "action": "setFocused",
+            "target": [
+                1
+            ],
+            "value": true
+        },
+        {
+            "millis": 98353,
+            "action": "setMode",
+            "target": [
+                0
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 98353,
+            "action": "setViewTargetId",
+            "target": [
+                0
+            ],
+            "value": 2
+        },
+        {
+            "millis": 98990,
+            "action": "setMode",
+            "target": [
+                1
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 98990,
+            "action": "setViewTargetId",
+            "target": [
+                1
+            ],
+            "value": 2
+        },
+        {
+            "millis": 99430,
+            "action": "setMode",
+            "target": [
+                3
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 99430,
+            "action": "setViewTargetId",
+            "target": [
+                3
+            ],
+            "value": 2
+        },
+        {
+            "millis": 108190,
+            "action": "setFocused",
+            "target": [
+                1
+            ],
+            "value": false
+        },
+        {
+            "millis": 109575,
+            "action": "setFocused",
+            "target": [
+                3
+            ],
+            "value": true
+        },
+        {
+            "millis": 109800,
+            "action": "setMode",
+            "target": [
+                3
+            ],
+            "value": "ATT_STARE"
+        },
+        {
+            "millis": 109939,
+            "action": "setMode",
+            "target": [
+                0
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 109939,
+            "action": "setViewTargetId",
+            "target": [
+                0
+            ],
+            "value": 3
+        },
+        {
+            "millis": 110389,
+            "action": "setMode",
+            "target": [
+                2
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 110389,
+            "action": "setViewTargetId",
+            "target": [
+                2
+            ],
+            "value": 3
+        },
+        {
+            "millis": 110441,
+            "action": "setMode",
+            "target": [
+                1
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 110441,
+            "action": "setViewTargetId",
+            "target": [
+                1
+            ],
+            "value": 3
+        },
+        {
+            "millis": 140000,
+            "action": "stop"
+        }
+    ]
+}
