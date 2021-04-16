@@ -27,7 +27,7 @@ class View {
     float lerpRX;
     float lerpRY;
 
-    float noiseFreq = random(0.003, 0.01);
+    float noiseFreq = random(0.001, 0.01);
 
     String name;
 

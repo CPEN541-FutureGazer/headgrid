@@ -8,6 +8,8 @@ class HeadView extends View {
 
     /* Reference to the head object */
     HeadModel model;
+
+    float randomFocusFreq;
     
     public HeadView(int id, HeadModel model, float x, float y) {
         super(id, x, y);
@@ -16,6 +18,11 @@ class HeadView extends View {
         
         this.rotX = 0;
         this.rotY = 0;
+
+        this.lerpRX = random(0.1, 0.2);
+        this.lerpRY = random(0.05, 0.1);
+
+        this.randomFocusFreq = random(0.001, 0.01);
     }
     
     @Override
@@ -77,14 +84,18 @@ class HeadView extends View {
                     break;
 
                 case ATT_RANDOM:
-                    targetRX = map(noise(frameCount * 0.01 + PI * this.id), 0, 1, HALF_PI, - HALF_PI);
-                    targetRY = map(noise(frameCount * 0.01 - PI * this.id), 0, 1, HALF_PI, - HALF_PI);
+                    targetRX = map(noise(frameCount * this.randomFocusFreq + PI * this.id), 0, 1, HALF_PI, - HALF_PI);
+                    targetRY = map(noise(frameCount * this.randomFocusFreq - PI * this.id), 0, 1, HALF_PI, - HALF_PI);
                     break;
             }
                 
             if (this.isNoisy) {
-                targetRY += (2 * noise(this.x + frameCount * this.noiseFreq) - 1) * 0.25;
-                targetRX += (2 * noise(this.y + frameCount * this.noiseFreq) - 1) * 0.15;
+                if (this.isFocused) {
+                    targetRX += (2 * noise(this.x + frameCount * (this.noiseFreq * 2.0)) - 1) * 0.4;
+                } else {
+                    targetRX += (2 * noise(this.x + frameCount * this.noiseFreq) - 1) * 0.15;
+                }
+                targetRY += (2 * noise(this.y + frameCount * this.noiseFreq) - 1) * 0.25;
             }
             
             targetRY = constrain(targetRY, - HALF_PI, HALF_PI);
@@ -94,7 +105,7 @@ class HeadView extends View {
             this.rotX = lerp(this.rotX, targetRX, this.lerpRX);
 
             // Head bobbing
-            rotateZ((targetRY - this.rotY) * 0.3);
+            // rotateZ((targetRY - this.rotY) * 0.1);
         }
         
         rotateY(-this.rotY);

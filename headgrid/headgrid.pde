@@ -16,7 +16,7 @@ final String EXP_EC_CONFIG = "experimentConfigs/expE_C.json";
 final String EXP_ED_CONFIG = "experimentConfigs/expE_D.json";
 
 /* Whatever config we're testing right now */
-String ACTIVE_CONFIG = EXP_EB_CONFIG;
+String ACTIVE_CONFIG = EXP_A_CONFIG;
 
 JSONObject config;
 JSONArray events;
@@ -41,10 +41,11 @@ boolean g_showMillis;
 
 /* Use this to offset the millis() function because millis() don't account for load times */
 int g_millisOffset = 0;
+int g_additionalMillisOffset = 3000;
 
 /* Wrapper function for millis that applies the offset */
 int ms() {
-    return millis() - g_millisOffset;
+    return millis() - g_millisOffset - g_additionalMillisOffset;
 }
 
 PGraphics nameOverlayImage;
@@ -179,6 +180,12 @@ void populateSceneWithConfig(JSONArray arr) {
         int newId = p.getInt("id");
         String newName = p.getString("name");
         Boolean is3D = p.getBoolean("head3d");
+
+        Boolean trackMouse = false;
+        try {
+            trackMouse = p.getBoolean("trackingMouse");
+        } catch (Exception e) {
+        }
         
         String modeStr = p.getString("mode");
         AttentionMode newMode;
@@ -203,6 +210,11 @@ void populateSceneWithConfig(JSONArray arr) {
 
         newView.name = newName;
         newView.attentionMode = newMode;
+
+        newView.trackingMouse = trackMouse;
+        if (trackMouse) {
+            newView.attentionMode = AttentionMode.ATT_NORMAL;
+        }
 
         g_views.add(newView);
     }

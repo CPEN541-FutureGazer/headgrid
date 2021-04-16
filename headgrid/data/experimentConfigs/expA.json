@@ -8,13 +8,14 @@
     "displayNamePlates": false,
     "initSceneFromConfig": true,
     "showMillis": true,
-    "soundFiles": [],
+    "soundFiles": ["E1_P1_norm.wav"],
     "init": {
         "participants": [
             {
                 "id": 1,
                 "name": "",
                 "head3d": true,
+                "trackingMouse": false,
                 "mode": "ATT_RANDOM"
             },
             {
@@ -75,61 +76,114 @@
             "value": true
         },
         {
-            "millis": 2000,
-            "target": [3],
+            "millis": 0,
+            "action": "playSound",
+            "value": "E1_P1_norm.wav"
+        },
+        {
+            "millis": 2111,
+            "target": [5],
+            "action": "setFocused",
+            "value": true
+        },
+        {
+            "millis": 2111,
+            "target": [5],
             "action": "setMode",
             "value": "ATT_STARE"
         },
         {
-            "millis": 4000,
-            "target": [3],
+            "millis": 2500,
+            "target": [1, 3, 6, 8],
             "action": "setMode",
-            "value": "ATT_RANDOM"
+            "value": "ATT_NORMAL"
         },
         {
-            "millis": 6000,
-            "target": [8],
+            "millis": 2500,
+            "target": [1, 3, 6, 8],
+            "action": "setViewTargetId",
+            "value": 5
+        },
+        {
+            "millis": 3000,
+            "target": [2, 4, 7, 9],
+            "action": "setMode",
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 3000,
+            "target": [2, 4, 7, 9],
+            "action": "setViewTargetId",
+            "value": 5
+        },
+        {
+            "millis": 15833,
+            "target": [5],
+            "action": "setFocused",
+            "value": false
+        },
+        {
+            "millis": 16000,
+            "target": [5],
+            "action": "setMode",
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 16000,
+            "target": [5],
+            "action": "setViewTargetId",
+            "value": 9
+        },
+        {
+            "millis": 18800,
+            "target": [5],
+            "action": "setViewTargetId",
+            "value": 3
+        },
+        {
+            "millis": 19400,
+            "target": [5],
             "action": "setMode",
             "value": "ATT_STARE"
         },
         {
-            "millis": 8000,
-            "target": [8],
-            "action": "setMode",
-            "value": "ATT_RANDOM"
+            "millis": 19406,
+            "target": [5],
+            "action": "setFocused",
+            "value": true
         },
         {
-            "millis": 8000,
-            "target": [1, 3],
+            "millis": 26267,
+            "target": [5],
+            "action": "setFocused",
+            "value": false
+        },
+        {
+            "millis": 27500,
+            "target": [5],
+            "action": "setMode",
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 27500,
+            "target": [5],
+            "action": "setViewTargetId",
+            "value": 6
+        },
+        {
+            "millis": 30570,
+            "target": [5],
+            "action": "setFocused",
+            "value": true
+        },
+        {
+            "millis": 31000,
+            "target": [5],
             "action": "setMode",
             "value": "ATT_STARE"
         },
         {
-            "millis": 10000,
-            "target": [5, 9],
-            "action": "setMode",
-            "value": "ATT_STARE"
-        },
-        {
-            "millis": 12000,
-            "target": [3, 5],
-            "action": "setMode",
-            "value": "ATT_RANDOM"
-        },
-        {
-            "millis": 14000,
-            "target": [1],
-            "action": "setMode",
-            "value": "ATT_RANDOM"
-        },
-        {
-            "millis": 18000,
-            "target": [9],
-            "action": "setMode",
-            "value": "ATT_RANDOM"
-        },
-        {
-            "millis": 24000,
+            "millis": 130000,
             "action": "stop"
         }
     ]
