@@ -5,7 +5,7 @@ import java.util.Map;
 /* Config file path */
 final String TEST_CONFIG = "config.json";
 
-final String EXP_A_CONFIG = "experimentConfigs/expA.json";
+final String EXP_A_CONFIG = "experimentConfigs/gen_expA.json";
 final String EXP_B_CONFIG = "experimentConfigs/expB.json";
 final String EXP_C_CONFIG = "experimentConfigs/expC.json";
 final String EXP_D_CONFIG = "experimentConfigs/expD.json";
@@ -85,7 +85,7 @@ void setup() {
     // WIP: webcam capture
     //String[] cameras = Capture.list();
     //if (cameras.length == 0) {
-    //    println("No cameras"); //<>//
+    //    println("No cameras"); //<>// //<>//
     //} else {
     //    for (int i = 0; i < cameras.length; i++) {
     //        println(cameras[i]);
