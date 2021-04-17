@@ -16,7 +16,7 @@ final String EXP_EC_CONFIG = "experimentConfigs/gen_expE_C.json";
 final String EXP_ED_CONFIG = "experimentConfigs/gen_expE_D.json";
 
 /* Whatever config we're testing right now */
-String ACTIVE_CONFIG = EXP_EA_CONFIG;
+String ACTIVE_CONFIG = EXP_ED_CONFIG;
 
 JSONObject config;
 JSONArray events;
@@ -64,6 +64,7 @@ PImage zoomUI;
 //Capture webcam;
 
 Boolean g_finished = false;
+Boolean g_started = false;
 
 /* Sound files */
 HashMap<String, SoundFile> soundFilesMap = new HashMap<String, SoundFile>();
@@ -105,7 +106,8 @@ void setup() {
 
     g_enableKeyboard = config.getBoolean("enableKeyboard");
 
-    g_showMillis = config.getBoolean("showMillis");
+    //g_showMillis = config.getBoolean("showMillis");
+    g_showMillis = false;
 
     JSONArray configParticipants = config.getJSONObject("init").getJSONArray("participants");
     populateSceneWithConfig(configParticipants);
@@ -121,10 +123,11 @@ void setup() {
     events = config.getJSONArray("events");
 
     /* Finished setting up; reset millis offset */
-    g_millisOffset = millis();
 }
 
 void draw() {
+    if (!g_started) return;
+    
     background(33);
     fill(255);
     noStroke();

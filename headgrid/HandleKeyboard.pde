@@ -1,6 +1,11 @@
 void keyPressed() {
 
-    if (!g_enableKeyboard) return;
+    //if (!g_enableKeyboard) return;
+    
+    if (key == ' ' && !g_started) {
+        g_started = true;
+        g_millisOffset = millis();
+    }
 
     /* Selection keys */
     if (key == 'a') { selectAll(true); }

@@ -105,13 +105,13 @@ class EyeView extends View {
                 break;
         }
 
-        if (this.isNoisy) {
-            targetX += (2 * noise(this.x + frameCount * this.noiseFreq) - 1) * 0.2;
-            targetY += (2 * noise(this.y + frameCount * this.noiseFreq - 1000) - 1) * 0.2;
-        }
-
         this.currentX = lerp(this.currentX, this.targetX, 0.17);
         this.currentY = lerp(this.currentY, this.targetY, 0.17);
+        
+        if (this.isNoisy) {
+            this.currentX += (2 * noise(this.x + frameCount * this.noiseFreq) - 1) * 4;
+            this.currentY += (2 * noise(this.y + frameCount * this.noiseFreq - 1000) - 1) * 4;
+        }
 
         pushMatrix();
         translate(this.x, this.y);

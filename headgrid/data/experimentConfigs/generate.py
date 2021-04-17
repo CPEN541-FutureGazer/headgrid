@@ -103,6 +103,7 @@ def generateExpB(filename, head3d=True):
 
     # Focus modes
     addSetFocusedEvent(e, 4121, presenter, True)
+    addSetModeEvent(e, 4121, presenter, 'stare')
     addSetFocusedEvent(e, 6534, presenter, False)
     addSetFocusedEvent(e, 8092, presenter, True)
     addSetFocusedEvent(e, 10404, presenter, False)
@@ -222,12 +223,14 @@ def generateExpD(filename, head3d=True):
     def getListener(presenter_id):
         return [i for i in range(N) if i != presenter_id]
 
-    def addEventsTurnTowardsPresenter(presenter_id, start, end, presenterStare=True, ignore=[]):
-        if (presenterStare):
+    def addEventsTurnTowardsPresenter(presenter_id, start, end, presenterTarget):
+        if (presenterTarget == presenter_id):
             addSetModeEvent(e, start, [presenter_id], 'stare')
+        else:
+            addSetModeEvent(e, start, [presenter_id], 'normal')
+            addSetViewTargetIdEvent(e, start, [presenter_id], presenterTarget)
+
         for i in getListener(presenter_id):
-            if i in ignore:
-                continue
             trigger = random.randint(start, end)
             addSetModeEvent(e, trigger, [i], 'normal')
             addSetViewTargetIdEvent(e, trigger, [i], presenter_id)
@@ -239,27 +242,28 @@ def generateExpD(filename, head3d=True):
 
     # Determined events
     addSetFocusedEvent(e, 11284, [0], True)
-    addEventsTurnTowardsPresenter(0, 11300, 13500)
+    addEventsTurnTowardsPresenter(0, 11300, 13500, 0)
     addSetFocusedEvent(e, 22674, [0], False)
     addSetFocusedEvent(e, 23085, [0], True)
     addSetFocusedEvent(e, 26009, [0], False)
     addSetFocusedEvent(e, 27394, [1], True)
-    addEventsTurnTowardsPresenter(1, 27600, 30000)
+    addEventsTurnTowardsPresenter(1, 27600, 30000, 0)
     addSetFocusedEvent(e, 48067, [1], False)
     addSetFocusedEvent(e, 49298, [2], True)
-    addEventsTurnTowardsPresenter(2, 49300, 52000)
+    addEventsTurnTowardsPresenter(2, 49300, 52000, 0)
     addSetFocusedEvent(e, 72947, [2], False)
     addSetFocusedEvent(e, 74486, [1], True)
-    addEventsTurnTowardsPresenter(1, 74500, 75000, False)
+    addEventsTurnTowardsPresenter(1, 74500, 75000, 2)
     addSetFocusedEvent(e, 80283, [1], False)
     addSetFocusedEvent(e, 80847, [2], True)
-    addEventsTurnTowardsPresenter(2, 80900, 82000, False)
+    addEventsTurnTowardsPresenter(2, 80900, 82000, 1)
     addSetFocusedEvent(e, 97520, [2], False)
     addSetFocusedEvent(e, 98084, [1], True)
-    addEventsTurnTowardsPresenter(2, 98000, 99500, False)
+    addEventsTurnTowardsPresenter(2, 98000, 99500, 1)
+    addSetViewTargetIdEvent(e, 100000, [2], 0)
     addSetFocusedEvent(e, 108190, [1], False)
     addSetFocusedEvent(e, 109575, [3], True)
-    addEventsTurnTowardsPresenter(3, 109800, 110500)
+    addEventsTurnTowardsPresenter(3, 109800, 110500, 0)
 
     # End
     addStopEvent(e, 140000)

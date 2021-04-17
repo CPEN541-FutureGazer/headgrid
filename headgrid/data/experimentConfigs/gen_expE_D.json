@@ -77,39 +77,7 @@
             "value": "ATT_STARE"
         },
         {
-            "millis": 11571,
-            "action": "setMode",
-            "target": [
-                2
-            ],
-            "value": "ATT_NORMAL"
-        },
-        {
-            "millis": 11571,
-            "action": "setViewTargetId",
-            "target": [
-                2
-            ],
-            "value": 0
-        },
-        {
-            "millis": 12777,
-            "action": "setMode",
-            "target": [
-                3
-            ],
-            "value": "ATT_NORMAL"
-        },
-        {
-            "millis": 12777,
-            "action": "setViewTargetId",
-            "target": [
-                3
-            ],
-            "value": 0
-        },
-        {
-            "millis": 12799,
+            "millis": 11768,
             "action": "setMode",
             "target": [
                 1
@@ -117,10 +85,42 @@
             "value": "ATT_NORMAL"
         },
         {
-            "millis": 12799,
+            "millis": 11768,
             "action": "setViewTargetId",
             "target": [
                 1
+            ],
+            "value": 0
+        },
+        {
+            "millis": 11981,
+            "action": "setMode",
+            "target": [
+                2
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 11981,
+            "action": "setViewTargetId",
+            "target": [
+                2
+            ],
+            "value": 0
+        },
+        {
+            "millis": 13128,
+            "action": "setMode",
+            "target": [
+                3
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 13128,
+            "action": "setViewTargetId",
+            "target": [
+                3
             ],
             "value": 0
         },
@@ -162,26 +162,18 @@
             "target": [
                 1
             ],
-            "value": "ATT_STARE"
-        },
-        {
-            "millis": 28416,
-            "action": "setMode",
-            "target": [
-                3
-            ],
             "value": "ATT_NORMAL"
         },
         {
-            "millis": 28416,
+            "millis": 27600,
             "action": "setViewTargetId",
             "target": [
-                3
+                1
             ],
-            "value": 1
+            "value": 0
         },
         {
-            "millis": 28903,
+            "millis": 29465,
             "action": "setMode",
             "target": [
                 2
@@ -189,7 +181,7 @@
             "value": "ATT_NORMAL"
         },
         {
-            "millis": 28903,
+            "millis": 29465,
             "action": "setViewTargetId",
             "target": [
                 2
@@ -197,7 +189,7 @@
             "value": 1
         },
         {
-            "millis": 28991,
+            "millis": 29861,
             "action": "setMode",
             "target": [
                 0
@@ -205,10 +197,26 @@
             "value": "ATT_NORMAL"
         },
         {
-            "millis": 28991,
+            "millis": 29861,
             "action": "setViewTargetId",
             "target": [
                 0
+            ],
+            "value": 1
+        },
+        {
+            "millis": 29900,
+            "action": "setMode",
+            "target": [
+                3
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 29900,
+            "action": "setViewTargetId",
+            "target": [
+                3
             ],
             "value": 1
         },
@@ -234,42 +242,18 @@
             "target": [
                 2
             ],
-            "value": "ATT_STARE"
-        },
-        {
-            "millis": 50262,
-            "action": "setMode",
-            "target": [
-                3
-            ],
             "value": "ATT_NORMAL"
         },
         {
-            "millis": 50262,
+            "millis": 49300,
             "action": "setViewTargetId",
             "target": [
-                3
+                2
             ],
-            "value": 2
+            "value": 0
         },
         {
-            "millis": 50940,
-            "action": "setMode",
-            "target": [
-                0
-            ],
-            "value": "ATT_NORMAL"
-        },
-        {
-            "millis": 50940,
-            "action": "setViewTargetId",
-            "target": [
-                0
-            ],
-            "value": 2
-        },
-        {
-            "millis": 51769,
+            "millis": 50566,
             "action": "setMode",
             "target": [
                 1
@@ -277,10 +261,42 @@
             "value": "ATT_NORMAL"
         },
         {
-            "millis": 51769,
+            "millis": 50566,
             "action": "setViewTargetId",
             "target": [
                 1
+            ],
+            "value": 2
+        },
+        {
+            "millis": 51397,
+            "action": "setMode",
+            "target": [
+                0
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 51397,
+            "action": "setViewTargetId",
+            "target": [
+                0
+            ],
+            "value": 2
+        },
+        {
+            "millis": 51742,
+            "action": "setMode",
+            "target": [
+                3
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 51742,
+            "action": "setViewTargetId",
+            "target": [
+                3
             ],
             "value": 2
         },
@@ -301,7 +317,23 @@
             "value": true
         },
         {
-            "millis": 74504,
+            "millis": 74500,
+            "action": "setMode",
+            "target": [
+                1
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 74500,
+            "action": "setViewTargetId",
+            "target": [
+                1
+            ],
+            "value": 2
+        },
+        {
+            "millis": 74566,
             "action": "setMode",
             "target": [
                 3
@@ -309,7 +341,7 @@
             "value": "ATT_NORMAL"
         },
         {
-            "millis": 74504,
+            "millis": 74566,
             "action": "setViewTargetId",
             "target": [
                 3
@@ -317,34 +349,34 @@
             "value": 1
         },
         {
-            "millis": 74779,
+            "millis": 74628,
             "action": "setMode",
             "target": [
-                0
+                2
             ],
             "value": "ATT_NORMAL"
         },
         {
-            "millis": 74779,
+            "millis": 74628,
             "action": "setViewTargetId",
             "target": [
-                0
+                2
             ],
             "value": 1
         },
         {
-            "millis": 74884,
+            "millis": 74978,
             "action": "setMode",
             "target": [
-                2
+                0
             ],
             "value": "ATT_NORMAL"
         },
         {
-            "millis": 74884,
+            "millis": 74978,
             "action": "setViewTargetId",
             "target": [
-                2
+                0
             ],
             "value": 1
         },
@@ -365,39 +397,23 @@
             "value": true
         },
         {
-            "millis": 81276,
+            "millis": 80900,
             "action": "setMode",
             "target": [
-                0
+                2
             ],
             "value": "ATT_NORMAL"
         },
         {
-            "millis": 81276,
+            "millis": 80900,
             "action": "setViewTargetId",
             "target": [
-                0
+                2
             ],
-            "value": 2
+            "value": 1
         },
         {
-            "millis": 81605,
-            "action": "setMode",
-            "target": [
-                1
-            ],
-            "value": "ATT_NORMAL"
-        },
-        {
-            "millis": 81605,
-            "action": "setViewTargetId",
-            "target": [
-                1
-            ],
-            "value": 2
-        },
-        {
-            "millis": 81963,
+            "millis": 80965,
             "action": "setMode",
             "target": [
                 3
@@ -405,10 +421,42 @@
             "value": "ATT_NORMAL"
         },
         {
-            "millis": 81963,
+            "millis": 80965,
             "action": "setViewTargetId",
             "target": [
                 3
+            ],
+            "value": 2
+        },
+        {
+            "millis": 81174,
+            "action": "setMode",
+            "target": [
+                1
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 81174,
+            "action": "setViewTargetId",
+            "target": [
+                1
+            ],
+            "value": 2
+        },
+        {
+            "millis": 81779,
+            "action": "setMode",
+            "target": [
+                0
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 81779,
+            "action": "setViewTargetId",
+            "target": [
+                0
             ],
             "value": 2
         },
@@ -421,20 +469,20 @@
             "value": false
         },
         {
-            "millis": 98069,
+            "millis": 98000,
             "action": "setMode",
             "target": [
-                0
+                2
             ],
             "value": "ATT_NORMAL"
         },
         {
-            "millis": 98069,
+            "millis": 98000,
             "action": "setViewTargetId",
             "target": [
-                0
+                2
             ],
-            "value": 2
+            "value": 1
         },
         {
             "millis": 98084,
@@ -445,23 +493,23 @@
             "value": true
         },
         {
-            "millis": 98727,
+            "millis": 98922,
             "action": "setMode",
             "target": [
-                3
+                0
             ],
             "value": "ATT_NORMAL"
         },
         {
-            "millis": 98727,
+            "millis": 98922,
             "action": "setViewTargetId",
             "target": [
-                3
+                0
             ],
             "value": 2
         },
         {
-            "millis": 99455,
+            "millis": 99344,
             "action": "setMode",
             "target": [
                 1
@@ -469,12 +517,36 @@
             "value": "ATT_NORMAL"
         },
         {
-            "millis": 99455,
+            "millis": 99344,
             "action": "setViewTargetId",
             "target": [
                 1
             ],
             "value": 2
+        },
+        {
+            "millis": 99386,
+            "action": "setMode",
+            "target": [
+                3
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 99386,
+            "action": "setViewTargetId",
+            "target": [
+                3
+            ],
+            "value": 2
+        },
+        {
+            "millis": 100000,
+            "action": "setViewTargetId",
+            "target": [
+                2
+            ],
+            "value": 0
         },
         {
             "millis": 108190,
@@ -498,42 +570,18 @@
             "target": [
                 3
             ],
-            "value": "ATT_STARE"
-        },
-        {
-            "millis": 110203,
-            "action": "setMode",
-            "target": [
-                1
-            ],
             "value": "ATT_NORMAL"
         },
         {
-            "millis": 110203,
+            "millis": 109800,
             "action": "setViewTargetId",
             "target": [
-                1
+                3
             ],
-            "value": 3
+            "value": 0
         },
         {
-            "millis": 110275,
-            "action": "setMode",
-            "target": [
-                0
-            ],
-            "value": "ATT_NORMAL"
-        },
-        {
-            "millis": 110275,
-            "action": "setViewTargetId",
-            "target": [
-                0
-            ],
-            "value": 3
-        },
-        {
-            "millis": 110317,
+            "millis": 109826,
             "action": "setMode",
             "target": [
                 2
@@ -541,10 +589,42 @@
             "value": "ATT_NORMAL"
         },
         {
-            "millis": 110317,
+            "millis": 109826,
             "action": "setViewTargetId",
             "target": [
                 2
+            ],
+            "value": 3
+        },
+        {
+            "millis": 110133,
+            "action": "setMode",
+            "target": [
+                1
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 110133,
+            "action": "setViewTargetId",
+            "target": [
+                1
+            ],
+            "value": 3
+        },
+        {
+            "millis": 110289,
+            "action": "setMode",
+            "target": [
+                0
+            ],
+            "value": "ATT_NORMAL"
+        },
+        {
+            "millis": 110289,
+            "action": "setViewTargetId",
+            "target": [
+                0
             ],
             "value": 3
         },
